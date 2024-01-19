@@ -6,8 +6,15 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'src/App.tsx'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    parser: '@typescript-eslint/parser',
+  },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': [
@@ -18,7 +25,7 @@ module.exports = {
     'padded-blocks': ['warn', 'never'],
     semi: ['error', 'never'],
     'comma-dangle': ['error', 'never'],
-    'no-trailing-spaces': ['error', 'never'],
+    'no-trailing-spaces': ['error'],
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'no-unreachable': ['error'],
     'no-var': ['error'],
