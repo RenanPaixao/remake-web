@@ -16,6 +16,13 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
   plugins: ['react-refresh'],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -43,12 +50,16 @@ module.exports = {
     'block-scoped-var': ['error'],
     'no-else-return': ['error'],
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
+    indent: ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "no-empty": "warn",
     
     // TypeScript
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/consistent-type-imports': ['off', { prefer: 'type-imports' }],
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
-    '@typescript-eslint/strict-boolean-expressions': 'off'
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    "@typescript-eslint/explicit-function-return-type": "warn"
   },
 }
