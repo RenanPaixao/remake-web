@@ -16,10 +16,10 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
   plugins: ['react-refresh'],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  'settings': {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx']
       }
     }
   },
@@ -50,9 +50,9 @@ module.exports = {
     'block-scoped-var': ['error'],
     'no-else-return': ['error'],
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
-    indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "no-empty": "warn",
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    'no-empty': 'warn',
     
     // TypeScript
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
@@ -60,6 +60,16 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': ['off', { prefer: 'type-imports' }],
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
     '@typescript-eslint/strict-boolean-expressions': 'off',
-    "@typescript-eslint/explicit-function-return-type": "warn"
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn'
   },
+  
+  overrides: [
+    {
+      files: ['*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      }
+    }
+  ],
 }

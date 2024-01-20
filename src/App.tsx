@@ -5,7 +5,7 @@ import AppRouter from './routes.tsx'
 function App() {
   return (
     <ChakraProvider>
-      <AppRouter />
+        <AppRouter />
     </ChakraProvider>
   )
 }

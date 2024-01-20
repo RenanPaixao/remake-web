@@ -5,6 +5,9 @@ import { NotFound } from './pages/NotFound.tsx'
 import { ForgotPassword } from './pages/ForgotPassword.tsx'
 import { SignUp } from './pages/SignUp.tsx'
 
+/**
+ * Creates a router for the application.
+ */
 export default function AppRouter() {
   return (
     <BrowserRouter>
