@@ -1,8 +1,12 @@
 import './App.css'
+import { ChakraProvider } from '@chakra-ui/react'
+import AppRouter from './routes.tsx'
 
 function App() {
   return (
-      <h1>Remake</h1>
+    <ChakraProvider>
+      <AppRouter />
+    </ChakraProvider>
   )
 }
 
