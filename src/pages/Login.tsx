@@ -1,9 +1,9 @@
-import { Button, Center, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
+import { Button, Center, FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
 import { Field, Form, Formik, FormikTouched, FormikErrors } from 'formik'
 import * as Yup from 'yup'
 import React from 'react'
 import { supabase } from '../utils/supabase.ts'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '@chakra-ui/react'
 
 interface FormValues {
@@ -61,7 +61,7 @@ export const Login = (): React.JSX.Element => {
     return !!touched[name] && !!errors[name]
   }
 
-  return <Center height='100vh'>
+  return <Center height='100vh' flexDirection='column'>
     <Formik initialValues={{
       email: '',
       password: ''
@@ -104,5 +104,15 @@ export const Login = (): React.JSX.Element => {
         </Form>
       )}
     </Formik>
+    <Text mt='2rem' fontSize='0.9rem'>Don't have an account?
+      <Link to='/sign-up'>
+        <strong> Register here!</strong>
+      </Link>
+    </Text>
+    <Text fontSize='0.9rem'>
+      <Link to='/forgot-password'>
+        <strong>Forgot password?</strong>
+      </Link>
+    </Text>
   </Center>
 }
