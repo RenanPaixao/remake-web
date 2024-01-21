@@ -4,7 +4,12 @@ import AppRouter from './routes.tsx'
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider toastOptions={{
+      defaultOptions: {
+        duration: 4000,
+        position: 'top'
+      }
+    }}>
         <AppRouter />
     </ChakraProvider>
   )

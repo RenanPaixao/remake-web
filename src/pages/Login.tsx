@@ -2,6 +2,9 @@ import { Button, Center, FormControl, FormErrorMessage, FormLabel, Input } from 
 import { Field, Form, Formik, FormikTouched, FormikErrors } from 'formik'
 import * as Yup from 'yup'
 import React from 'react'
+import { supabase } from '../utils/supabase.ts'
+import { useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
 
 interface FormValues {
   email: string
@@ -14,12 +17,37 @@ const validationSchema = Yup.object({
 })
 
 export const Login = (): React.JSX.Element => {
+  const toast = useToast()
+  const navigate = useNavigate()
   /**
    * Submit the login form.
    * @param values
    */
-  function submitForm(values: FormValues): void {
-    console.log(values)
+  async function submitForm(values: FormValues): Promise<void> {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: values.email,
+      password: values.password
+    })
+
+    if (error) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        isClosable: true
+      })
+      console.error(error)
+      return
+    }
+
+    toast({
+      title: 'Success',
+      description: 'You have successfully logged in.',
+      status: 'success',
+      isClosable: true
+    })
+
+    navigate('/')
   }
 
   /**
@@ -57,7 +85,7 @@ export const Login = (): React.JSX.Element => {
             {({ field }: any) => (
               <FormControl mt={4} isInvalid={hasError('password', touched, errors)} isRequired>
                 <FormLabel htmlFor="password">Password</FormLabel>
-                <Input {...field} id="password" placeholder="Password" />
+                <Input type='password' {...field} id="password" placeholder="Password" />
                 <FormErrorMessage>{errors.password}</FormErrorMessage>
               </FormControl>
             )}
@@ -68,7 +96,7 @@ export const Login = (): React.JSX.Element => {
             color="white"
             mt={4}
             isLoading={isSubmitting}
-            isDisabled={isSubmitting || Object.keys(errors).length > 0 || Object.keys(touched).length === 0}
+            isDisabled={isSubmitting || Object.keys(errors).length > 0 }
             type="submit"
           >
             Login
