@@ -1,20 +1,17 @@
 import { Button, Center, FormControl, FormErrorMessage, FormLabel, Input, Text } from '@chakra-ui/react'
-import { Field, Form, Formik, FormikTouched, FormikErrors } from 'formik'
+import { Field, FieldProps, Form, Formik, FormikTouched, FormikErrors } from 'formik'
 import * as Yup from 'yup'
 import React from 'react'
 import { supabase } from '../utils/supabase.ts'
 import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '@chakra-ui/react'
 
-interface FormValues {
-  email: string
-  password: string
-}
-
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string().required('Required').min(8, 'Password must be at least 8 characters')
 })
+
+type FormValues = Yup.InferType<typeof validationSchema>
 
 export const Login = (): React.JSX.Element => {
   const toast = useToast()
@@ -72,7 +69,7 @@ export const Login = (): React.JSX.Element => {
       {({ isSubmitting, errors, touched }) => (
         <Form>
           <Field name="email">
-            {({ field }: any) => (
+            {({ field }: FieldProps) => (
               <FormControl isInvalid={hasError('email', touched, errors)} isRequired>
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input {...field} id="email" placeholder="Email" />
@@ -82,7 +79,7 @@ export const Login = (): React.JSX.Element => {
           </Field>
 
           <Field name="password">
-            {({ field }: any) => (
+            {({ field }: FieldProps) => (
               <FormControl mt={4} isInvalid={hasError('password', touched, errors)} isRequired>
                 <FormLabel htmlFor="password">Password</FormLabel>
                 <Input type='password' {...field} id="password" placeholder="Password" />
