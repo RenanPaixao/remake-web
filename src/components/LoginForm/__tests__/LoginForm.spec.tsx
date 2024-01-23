@@ -28,6 +28,7 @@ describe('LoginForm', () => {
       }
     })
   })
+
   it('should render', async () => {
     const { container } = customRender(<LoginForm/>)
 

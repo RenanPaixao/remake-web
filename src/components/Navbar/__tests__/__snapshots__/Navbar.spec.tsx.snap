@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar > should render 1`] = `
+<div>
+  <div
+    class="css-hboir5"
+  >
+    <a
+      class="chakra-link css-spn4bz"
+      href="/"
+    >
+      <div
+        class="css-0"
+      >
+        <img
+          class="chakra-image__placeholder css-16kb41"
+          src="https://via.placeholder.com/50"
+        />
+      </div>
+    </a>
+    <div
+      class="chakra-stack css-azg3gr"
+    >
+      <div
+        class="chakra-stack__item css-1qy82gu"
+      >
+        <a
+          class="chakra-link css-spn4bz"
+          href="/"
+        >
+          <button
+            class="chakra-button css-wubf5g"
+            type="button"
+          >
+            Home
+          </button>
+        </a>
+      </div>
+      <div
+        class="chakra-stack__item css-1qy82gu"
+      >
+        <a
+          class="chakra-link css-spn4bz"
+          href="/collect-places"
+        >
+          <button
+            class="chakra-button css-wubf5g"
+            type="button"
+          >
+            Collect Places
+          </button>
+        </a>
+      </div>
+      <div
+        class="chakra-stack__item css-1qy82gu"
+      >
+        <a
+          class="chakra-link css-spn4bz"
+          href="/account"
+        >
+          <button
+            class="chakra-button css-wubf5g"
+            type="button"
+          >
+            Account
+          </button>
+        </a>
+      </div>
+    </div>
+    <button
+      class="chakra-button css-obasgk"
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

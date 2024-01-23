@@ -20,6 +20,8 @@ export const Navbar = (props: FlexProps) => {
     setIsLoading(true)
 
     const { error } = await supabase.auth.signOut()
+    setIsLoading(false)
+
     if (error) {
       toast({
         title: 'Error',
@@ -32,7 +34,6 @@ export const Navbar = (props: FlexProps) => {
       return
     }
 
-    setIsLoading(false)
     navigate('/login')
   }
 
