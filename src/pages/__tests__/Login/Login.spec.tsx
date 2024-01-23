@@ -1,24 +1,11 @@
-import { customRender } from '../../../../tests/test-utils.tsx'
 import { Login } from '../../Login.tsx'
 import { fireEvent } from '@testing-library/dom'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from '@remix-run/router'
-import { ReactElement } from 'react'
 import { act } from '@testing-library/react'
 import { expect } from 'vitest'
-
-// This is needed to test components that has Link components from react-router-dom.
-const history = createMemoryHistory()
-const renderWithRouter = (ui: ReactElement) => {
-  return customRender(
-    <Router location={history.location} navigator={history}>
-      {ui}
-    </Router>
-  )
-}
+import { customRender, testingHistory } from '../../../../tests/test-utils.tsx'
 
 const mockPushHistory = vi.fn()
-history.push = mockPushHistory
+testingHistory.push = mockPushHistory
 
 describe('Login', () => {
   beforeEach(() => {
@@ -32,13 +19,13 @@ describe('Login', () => {
   })
 
   it('should render', async () => {
-    const { container } = renderWithRouter(<Login/>)
+    const { container } = customRender(<Login/>)
 
     expect(container).toMatchSnapshot()
   })
 
   it('should redirect correctly to sign-up and forgot-password', async () => {
-    const { getByRole } = renderWithRouter(<Login/>)
+    const { getByRole } = customRender(<Login/>)
 
     const signUpLink = getByRole('link', { name: /register here!/i })
     const forgotPasswordLink = getByRole('link', { name: /forgot password?/i })

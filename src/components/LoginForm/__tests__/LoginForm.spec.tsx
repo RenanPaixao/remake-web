@@ -12,14 +12,16 @@ const toastMock = vi.fn()
 supabase.auth.signInWithPassword = supabaseLoginMock
 describe('LoginForm', () => {
   beforeEach(() => {
-    vi.mock('react-router-dom', () => ({
-      ...(vi.importActual('react-router-dom')),
-      useNavigate: () => navigateMock
-    }))
+    vi.mock('react-router-dom', async importOriginal => {
+      const actual: object = await importOriginal()
+      return {
+        ...actual,
+        useNavigate: () => navigateMock
+      }
+    })
 
     vi.mock('@chakra-ui/react', async importOriginal => {
       const actual: object = await importOriginal()
-
       return {
         ...actual,
         useToast: () => toastMock

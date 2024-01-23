@@ -1,18 +1,25 @@
 import { render, RenderOptions } from '@testing-library/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import { ReactElement } from 'react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from '@remix-run/router'
+
+const testingHistory = createMemoryHistory()
 
 // Disabled due to not needing to export a component.
 // eslint-disable-next-line react-refresh/only-export-components
 const Wrapper = ({ children }: {children: ReactElement}) => {
-  return <ChakraProvider toastOptions={{
-    defaultOptions: {
-      duration: 4000,
-      position: 'top'
-    }
-  }}>
-    {children}
-  </ChakraProvider>
+  // Creates a fake router for testing.
+  return <Router location={testingHistory.location} navigator={testingHistory}>
+    <ChakraProvider toastOptions={{
+      defaultOptions: {
+        duration: 4000,
+        position: 'top'
+      }
+    }}>
+      {children}
+    </ChakraProvider>
+  </Router>
 }
 
 /**
@@ -25,5 +32,6 @@ function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>
 }
 
 export {
-  customRender
+  customRender,
+  testingHistory
 }
