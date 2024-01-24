@@ -5,7 +5,7 @@ import { NotFound } from './pages/NotFound.tsx'
 import { ForgotPassword } from './pages/ForgotPassword.tsx'
 import { SignUp } from './pages/SignUp.tsx'
 import { Navbar } from './components/Navbar/Navbar.tsx'
-import { ReactElement } from 'react'
+import { RouteGuard } from './components/RouteGuard'
 
 /**
  * Creates a router for the application.
@@ -14,19 +14,31 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={renderWithNavbar(<Home />)} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        {/*<Route path="/" element={renderWithNavbar(<Home />)} />*/}
+        <Route path="/" element={(
+          <RouteGuard.NeedsAuthentication>
+            <Navbar p='1.3rem 3rem' maxW={'1280px'} m='0 auto'/>
+            <Home/>
+          </RouteGuard.NeedsAuthentication>
+        )} />
+        <Route path="/login" element={
+          <RouteGuard.RedirectsAuthenticated>
+            <Login />
+          </RouteGuard.RedirectsAuthenticated>
+        } />
+        <Route path="/forgot-password" element={
+          <RouteGuard.RedirectsAuthenticated>
+            <ForgotPassword />
+          </RouteGuard.RedirectsAuthenticated>
+        } />
+        <Route path="/sign-up" element={
+          <RouteGuard.RedirectsAuthenticated>
+            <SignUp />
+          </RouteGuard.RedirectsAuthenticated>
+        } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
 }
 
-const renderWithNavbar = (Component: ReactElement) => {
-  return <>
-    <Navbar p='1.3rem 3rem' maxW={'1280px'} m='0 auto'/>
-    {Component}
-  </>
-}
