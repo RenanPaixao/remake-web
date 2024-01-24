@@ -12,6 +12,7 @@ const toastMock = vi.fn()
 supabase.auth.signInWithPassword = supabaseLoginMock
 describe('LoginForm', () => {
   beforeEach(() => {
+    vi.resetAllMocks()
     vi.mock('react-router-dom', async importOriginal => {
       const actual: object = await importOriginal()
       return {
@@ -95,6 +96,7 @@ describe('LoginForm', () => {
         title: 'Error',
         description: error.message,
         status: 'error',
+        duration: 4000,
         isClosable: true
       })
     })
@@ -125,6 +127,7 @@ describe('LoginForm', () => {
         title: 'Success',
         description: 'You have successfully logged in.',
         status: 'success',
+        duration: 4000,
         isClosable: true
       })
     },{

@@ -1,5 +1,5 @@
 import { Center, Flex, Heading, Text } from '@chakra-ui/react'
-import { CategoryList } from '../components/CategoryItem/CategoryList.tsx'
+import { CategoryList } from '../components/CategoryList/CategoryList.tsx'
 import { TheLink } from '../components/TheLink/TheLink.tsx'
 
 export const Home = () => {
@@ -17,13 +17,13 @@ export const Home = () => {
         <Heading w='100%' size='md' colorScheme='red' textAlign='center'>
           Choose the category you want to discard:
         </Heading>
-        <Text textDecoration={'underline'} opacity='60%'>
+        <Text textDecoration={'underline'} opacity='60%' role={'link'}>
           <TheLink to={'/collect-places'}>
             See places closest to your location!
           </TheLink>
         </Text>
         <CategoryList />
-        <Text textDecoration={'underline'} opacity='60%'>
+        <Text textDecoration={'underline'} opacity='60%' role={'link'}>
           <TheLink to={'/faq'}>
             If you have any questions, visit our FAQ!
           </TheLink>

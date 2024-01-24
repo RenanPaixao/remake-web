@@ -1,8 +1,10 @@
 import { Field, FieldProps, Form, Formik, FormikErrors, FormikTouched } from 'formik'
-import { Button, FormControl, FormErrorMessage, FormLabel, Input, useToast } from '@chakra-ui/react'
+import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../utils/supabase.ts'
 import * as Yup from 'yup'
+import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
+import { useSuccessToast } from '../../hooks/toast/useSuccessToast.tsx'
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -12,7 +14,8 @@ const validationSchema = Yup.object({
 type FormValues = Yup.InferType<typeof validationSchema>
 
 export const LoginForm = () => {
-  const toast = useToast()
+  const errorToast = useErrorToast()
+  const successToast = useSuccessToast()
   const navigate = useNavigate()
 
   /**
@@ -26,22 +29,12 @@ export const LoginForm = () => {
     })
 
     if (error) {
-      toast({
-        title: 'Error',
-        description: error.message,
-        status: 'error',
-        isClosable: true
-      })
+      errorToast({ description: error.message })
       console.error(error)
       return
     }
 
-    toast({
-      title: 'Success',
-      description: 'You have successfully logged in.',
-      status: 'success',
-      isClosable: true
-    })
+    successToast({ description: 'You have successfully logged in.' })
 
     navigate('/')
   }

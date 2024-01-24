@@ -1,4 +1,4 @@
-import { Button, Flex, FlexProps, useToast } from '@chakra-ui/react'
+import { Button, Flex, FlexProps } from '@chakra-ui/react'
 import { NavbarLogo } from './NavbarLogo.tsx'
 import { LinkList } from './LinkList.tsx'
 import logo from '../../assets/logo.webp'
@@ -6,9 +6,10 @@ import { TheLink } from '../TheLink/TheLink.tsx'
 import { supabase } from '../../utils/supabase.ts'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 
 export const Navbar = (props: FlexProps) => {
-  const toast = useToast()
+  const errorToast = useErrorToast()
   const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -23,13 +24,7 @@ export const Navbar = (props: FlexProps) => {
     setIsLoading(false)
 
     if (error) {
-      toast({
-        title: 'Error',
-        description: error.message,
-        status: 'error',
-        duration: 4000,
-        isClosable: true
-      })
+      errorToast({ description: error.message })
       console.error(error)
       return
     }

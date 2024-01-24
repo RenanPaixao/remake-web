@@ -49,7 +49,7 @@ export const CategoryList = () => {
   return <SimpleGrid columns={[2, 2, 3]} spacing='2rem' >
     {
       categories.map(({ title, icon }) => (
-        <Button leftIcon={icon} p='2rem' >
+        <Button key={title} leftIcon={icon} p='2rem' >
           {title}
         </Button>
       ))

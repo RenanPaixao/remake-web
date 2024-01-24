@@ -56,6 +56,21 @@ exports[`Navbar > should render 1`] = `
       >
         <a
           class="chakra-link css-spn4bz"
+          href="/faq"
+        >
+          <button
+            class="chakra-button css-wubf5g"
+            type="button"
+          >
+            FAQ
+          </button>
+        </a>
+      </div>
+      <div
+        class="chakra-stack__item css-1qy82gu"
+      >
+        <a
+          class="chakra-link css-spn4bz"
           href="/account"
         >
           <button

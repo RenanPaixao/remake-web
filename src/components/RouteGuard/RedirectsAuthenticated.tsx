@@ -1,28 +1,21 @@
 import { Navigate } from 'react-router-dom'
 import { PropsWithChildren, useCallback, useContext, useEffect } from 'react'
 import { UserContext } from '../../context/UserContext.tsx'
-import { useToast } from '@chakra-ui/react'
+import { useWarningToast } from '../../hooks/toast/useWarningToast.tsx'
 
 export const RedirectsAuthenticated = ({ children }: PropsWithChildren) => {
   const { isAuthenticated } = useContext(UserContext)
-  const toast = useToast()
+  const warningToast = useWarningToast()
 
-  const showToast = useCallback(() => {
-    toast({
-      title: 'You are already logged in!',
-      description: 'You are already logged in!',
-      status: 'warning',
-      duration: 4000,
-      isClosable: true,
-      position: 'top'
-    })
-  }, [toast])
+  const showWarningToast = useCallback(() => {
+    warningToast({ description: 'You are already logged in!' })
+  }, [warningToast])
 
   useEffect(() => {
     if (isAuthenticated()) {
-      showToast()
+      showWarningToast()
     }
-  }, [isAuthenticated, showToast])
+  }, [isAuthenticated, showWarningToast])
 
   return isAuthenticated() ? <Navigate to={'/'} /> : children
 }
