@@ -38,7 +38,7 @@ module.exports = {
     'no-var': ['error'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-debugger': ['error'],
-    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': 'off',
     'object-curly-spacing': ['error', 'always'],
     'array-bracket-spacing': ['error', 'never'],
     'space-in-parens': ['error', 'never'],
@@ -61,7 +61,8 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'warn',
-    '@typescript-eslint/no-explicit-any': 'warn'
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
   },
   
   overrides: [
