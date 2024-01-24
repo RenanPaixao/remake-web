@@ -10,6 +10,9 @@ export const LinkList = () => {
       <NavbarLink to={'/collect-places'}>Collect Places</NavbarLink>
     </StackItem>
     <StackItem>
+      <NavbarLink to={'/faq'}>FAQ</NavbarLink>
+    </StackItem>
+    <StackItem>
       <NavbarLink to={'/account'}>Account</NavbarLink>
     </StackItem>
   </Stack>

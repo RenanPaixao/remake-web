@@ -26,7 +26,7 @@ export default function AppRouter() {
 
 const renderWithNavbar = (Component: ReactElement) => {
   return <>
-    <Navbar p='0.7rem 3rem'/>
+    <Navbar p='1.3rem 3rem' maxW={'1280px'} m='0 auto'/>
     {Component}
   </>
 }
