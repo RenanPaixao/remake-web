@@ -1,3 +1,8 @@
+import { SignUpForm } from '../components/SignUpForm/SignUpForm.tsx'
+import { Center } from '@chakra-ui/react'
+
 export const SignUp = () => {
-  return <h1>Cadastro</h1>
+  return <Center pt={28}>
+    <SignUpForm/>
+  </Center>
 }

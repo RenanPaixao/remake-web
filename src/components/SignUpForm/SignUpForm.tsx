@@ -3,9 +3,11 @@ import { Button, ButtonGroup, Checkbox, FormControl, FormErrorMessage, FormLabel
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import * as Yup from 'yup'
+import { supabase } from '../../utils/supabase.ts'
+import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('Required').max(50, 'Name must be at most 50 characters'),
+  firstName: Yup.string().required('Required').max(50, 'Name must be at most 50 characters'),
   lastName: Yup.string().required('Required').max(50, 'Last name must be at most 50 characters'),
   email: Yup.string().email('Invalid email address').required('Required').max(50, 'Email must be at most 50 characters'),
   password: Yup.string().required('Required').min(8, 'Password must be at least 8 characters'),
@@ -15,20 +17,40 @@ const validationSchema = Yup.object({
 type FormValues = Yup.InferType<typeof validationSchema>
 
 export const SignUpForm = () => {
+  const errorToast = useErrorToast()
   const [isLoading, setIsLoading] = useState(false)
+
   const navigate = useNavigate()
   const formik = useFormik<FormValues>({
     initialValues: {
-      name: '',
+      firstName: '',
       lastName: '',
       email: '',
       password: '',
       isRecycler: false
     },
-    onSubmit: values => {
+    onSubmit: async values => {
       setIsLoading(true)
-      console.warn(values)
+      const { error } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+        options: {
+          data: {
+            first_name: values.firstName,
+            last_name: values.lastName,
+            is_recycler: values.isRecycler
+          }
+        }
+      })
       setIsLoading(false)
+
+      if(error) {
+        errorToast({ description: error.message })
+        console.error(error)
+        return
+      }
+
+      navigate('/')
     },
     validationSchema,
     validateOnBlur: true
@@ -55,15 +77,15 @@ export const SignUpForm = () => {
   }
 
   return <form onSubmit={formik.handleSubmit}>
-    <FormControl mt={4} isInvalid={hasError('name', formik.touched, formik.errors)} isRequired>
-      <FormLabel htmlFor='name'>Name</FormLabel>
+    <FormControl mt={4} isInvalid={hasError('firstName', formik.touched, formik.errors)} isRequired>
+      <FormLabel htmlFor='firstName'>First Name</FormLabel>
       <Input
-        name='name'
+        name='firstName'
         onChange={formik.handleChange}
-        value={formik.values.name}
+        value={formik.values.firstName}
         onBlur={formik.handleBlur}
       />
-      <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
+      <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
     </FormControl>
 
     <FormControl mt={4} isInvalid={hasError('lastName', formik.touched, formik.errors)} isRequired>
