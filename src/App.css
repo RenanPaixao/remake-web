@@ -4,3 +4,8 @@
   min-height: 100vh;
   min-width: 100vw;
 }
+
+* {
+  box-sizing: border-box;
+}
+
