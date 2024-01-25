@@ -60,9 +60,7 @@ export const SignUpForm = () => {
    * Go to the login page.
    */
   function goToLogin() {
-    setIsLoading(true)
     navigate('/login')
-    setIsLoading(false)
   }
 
   /**
@@ -81,6 +79,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='firstName'>First Name</FormLabel>
       <Input
         name='firstName'
+        title='First Name'
         onChange={formik.handleChange}
         value={formik.values.firstName}
         onBlur={formik.handleBlur}
@@ -92,6 +91,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='lastName'>Last Name</FormLabel>
       <Input
         name='lastName'
+        title={'Last Name'}
         onChange={formik.handleChange}
         value={formik.values.lastName}
         onBlur={formik.handleBlur}
@@ -103,6 +103,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='email'>Email</FormLabel>
       <Input
         name='email'
+        title={'email'}
         onChange={formik.handleChange}
         value={formik.values.email}
         onBlur={formik.handleBlur}
@@ -114,7 +115,9 @@ export const SignUpForm = () => {
     <FormControl mt={4} isInvalid={hasError('password', formik.touched, formik.errors)} isRequired>
       <FormLabel htmlFor='password'>Password</FormLabel>
       <Input
+        data-testid={'password-input'}
         name='password'
+        title={'password'}
         type={'password'}
         onChange={formik.handleChange}
         value={formik.values.password}
@@ -123,7 +126,7 @@ export const SignUpForm = () => {
       <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
     </FormControl>
 
-    <FormControl display={'flex'} mt={4}>
+    <FormControl display={'flex'} mt={4} >
       <Checkbox
         name='isRecycler'
         onChange={formik.handleChange}
@@ -135,7 +138,14 @@ export const SignUpForm = () => {
 
     <ButtonGroup mt={8} spacing={10} isDisabled={isLoading}>
       <Button variant={'outline'} isLoading={isLoading} onClick={goToLogin}>Login</Button>
-      <Button colorScheme={'blue'} isLoading={isLoading} type={'submit'}>Create Account</Button>
+      <Button
+        colorScheme={'blue'}
+        isLoading={isLoading}
+        type={'submit'}
+        isDisabled={formik.isSubmitting || Object.keys(formik.errors).length > 0}
+      >
+        Create Account
+      </Button>
     </ButtonGroup>
   </form>
 }
