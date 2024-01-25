@@ -12,10 +12,10 @@ export const RedirectsAuthenticated = ({ children }: PropsWithChildren) => {
   }, [warningToast])
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    if (isAuthenticated) {
       showWarningToast()
     }
   }, [isAuthenticated, showWarningToast])
 
-  return isAuthenticated() ? <Navigate to={'/'} /> : children
+  return isAuthenticated ? <Navigate to={'/'} /> : children
 }

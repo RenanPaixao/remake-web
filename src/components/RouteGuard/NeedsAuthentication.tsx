@@ -5,5 +5,5 @@ import { UserContext } from '../../context/UserContext.tsx'
 export const NeedsAuthentication = ({ children }: PropsWithChildren) => {
   const { isAuthenticated } = useContext(UserContext)
 
-  return isAuthenticated() ? children : <Navigate to={'/login'}/>
+  return isAuthenticated ? children : <Navigate to={'/login'}/>
 }

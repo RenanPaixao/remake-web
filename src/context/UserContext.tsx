@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useEffect, useState } from 'react'
+import { createContext, PropsWithChildren, useEffect, useMemo, useState } from 'react'
 import { supabase } from '../utils/supabase.ts'
 
 interface User {
@@ -11,14 +11,12 @@ interface User {
 
 interface IProps{
   user: User | null
-  setUser: (user: User) => void
-  isAuthenticated: () => boolean
+  isAuthenticated: boolean
 }
 
 export const UserContext = createContext<IProps>({
   user: null,
-  setUser: () => {},
-  isAuthenticated: () => false
+  isAuthenticated: false
 })
 
 UserContext.displayName = 'UserContext'
@@ -56,13 +54,15 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   /**
    * Returns whether the user is authenticated.
    */
-  function isAuthenticated() {
-    return user !== null
-  }
+  const isAuthenticated = useMemo(() => {
+    const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID
+    const localStorageKey = `sb-${projectId}-auth-token`
+
+    return user !== null || localStorage.getItem(localStorageKey) !== null
+  }, [user])
 
   return <UserContext.Provider value={{
     user,
-    setUser,
     isAuthenticated
   }}>
     {children}
