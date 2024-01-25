@@ -1,6 +1,6 @@
 import { FormikErrors, FormikTouched } from 'formik'
 
-/** TODO: add this to all places using hasError function
+/**
  * Check if a field has an error.
  *
  * @param name - The name of the field.

@@ -1,10 +1,11 @@
-import { FormikErrors, FormikTouched, useFormik } from 'formik'
+import { useFormik } from 'formik'
 import { Button, ButtonGroup, Checkbox, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import * as Yup from 'yup'
 import { supabase } from '../../utils/supabase.ts'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
+import { hasFormikError } from '../../utils/hasFormikError.ts'
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Required').max(50, 'Name must be at most 50 characters'),
@@ -63,19 +64,8 @@ export const SignUpForm = () => {
     navigate('/login')
   }
 
-  /**
-   * Check if a field has an error.
-   *
-   * @param name - The name of the field.
-   * @param touched - The object with all touched fields.
-   * @param errors - The object with all errors.
-   */
-  function hasError(name: keyof FormValues, touched: FormikTouched<FormValues>, errors: FormikErrors<FormValues>): boolean {
-    return !!touched[name] && !!errors[name]
-  }
-
   return <form onSubmit={formik.handleSubmit}>
-    <FormControl mt={4} isInvalid={hasError('firstName', formik.touched, formik.errors)} isRequired>
+    <FormControl mt={4} isInvalid={hasFormikError('firstName', formik.touched, formik.errors)} isRequired>
       <FormLabel htmlFor='firstName'>First Name</FormLabel>
       <Input
         name='firstName'
@@ -87,7 +77,7 @@ export const SignUpForm = () => {
       <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
     </FormControl>
 
-    <FormControl mt={4} isInvalid={hasError('lastName', formik.touched, formik.errors)} isRequired>
+    <FormControl mt={4} isInvalid={hasFormikError('lastName', formik.touched, formik.errors)} isRequired>
       <FormLabel htmlFor='lastName'>Last Name</FormLabel>
       <Input
         name='lastName'
@@ -99,7 +89,7 @@ export const SignUpForm = () => {
       <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage>
     </FormControl>
 
-    <FormControl mt={4} isInvalid={hasError('email', formik.touched, formik.errors)} isRequired>
+    <FormControl mt={4} isInvalid={hasFormikError('email', formik.touched, formik.errors)} isRequired>
       <FormLabel htmlFor='email'>Email</FormLabel>
       <Input
         name='email'
@@ -112,7 +102,7 @@ export const SignUpForm = () => {
       <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
     </FormControl>
 
-    <FormControl mt={4} isInvalid={hasError('password', formik.touched, formik.errors)} isRequired>
+    <FormControl mt={4} isInvalid={hasFormikError('password', formik.touched, formik.errors)} isRequired>
       <FormLabel htmlFor='password'>Password</FormLabel>
       <Input
         data-testid={'password-input'}

@@ -1,10 +1,11 @@
-import { Field, FieldProps, Form, Formik, FormikErrors, FormikTouched } from 'formik'
+import { Field, FieldProps, Form, Formik } from 'formik'
 import { Button, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../utils/supabase.ts'
 import * as Yup from 'yup'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 import { useSuccessToast } from '../../hooks/toast/useSuccessToast.tsx'
+import { hasFormikError } from '../../utils/hasFormikError.ts'
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -39,17 +40,6 @@ export const LoginForm = () => {
     navigate('/')
   }
 
-  /**
-   * Check if a field has an error.
-   *
-   * @param name - The name of the field.
-   * @param touched - The object with all touched fields.
-   * @param errors - The object with all errors.
-   */
-  function hasError(name: keyof FormValues, touched: FormikTouched<FormValues>, errors: FormikErrors<FormValues>): boolean {
-    return !!touched[name] && !!errors[name]
-  }
-
   return <Formik initialValues={{
     email: '',
     password: ''
@@ -61,7 +51,7 @@ export const LoginForm = () => {
       <Form>
         <Field name="email">
           {({ field }: FieldProps) => (
-            <FormControl isInvalid={hasError('email', touched, errors)} isRequired>
+            <FormControl isInvalid={hasFormikError('email', touched, errors)} isRequired>
               <FormLabel htmlFor="email">Email</FormLabel>
               <Input {...field} id="email" placeholder="Email" />
               <FormErrorMessage>{errors.email}</FormErrorMessage>
@@ -71,7 +61,7 @@ export const LoginForm = () => {
 
         <Field name="password">
           {({ field }: FieldProps) => (
-            <FormControl mt={4} isInvalid={hasError('password', touched, errors)} isRequired>
+            <FormControl mt={4} isInvalid={hasFormikError('password', touched, errors)} isRequired>
               <FormLabel htmlFor="password">Password</FormLabel>
               <Input type='password' {...field} id="password" placeholder="Password"/>
               <FormErrorMessage>{errors.password}</FormErrorMessage>
