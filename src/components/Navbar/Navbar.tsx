@@ -32,7 +32,7 @@ export const Navbar = (props: FlexProps) => {
     navigate('/login')
   }
 
-  return <Flex w='100%' {...props}>
+  return <Flex as={'nav'} w='100%' {...props}>
     <TheLink to={'/'}>
       <NavbarLogo h={'50px'} src={logo} />
     </TheLink>
