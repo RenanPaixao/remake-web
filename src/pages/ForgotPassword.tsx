@@ -72,8 +72,9 @@ export const ForgotPassword = () => {
           isRequired
           isInvalid={hasFormikError<FormValues>('email', formik.touched, formik.errors)}
         >
-          <FormLabel htmlFor="email" >Email</FormLabel>
+          <FormLabel htmlFor="email">Email</FormLabel>
           <Input
+            aria-label={'Email'}
             name={'email'}
             type={'email'}
             onChange={formik.handleChange}
