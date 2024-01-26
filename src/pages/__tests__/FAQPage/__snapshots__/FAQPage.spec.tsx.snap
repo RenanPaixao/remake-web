@@ -1,0 +1,325 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FAQPage > should render 1`] = `
+<div>
+  <div
+    class="css-1bbbbuj"
+  >
+    <h1
+      class="chakra-heading css-1dklj6k"
+    >
+      FAQ
+    </h1>
+    <div
+      class="chakra-accordion css-0"
+    >
+      <div
+        class="chakra-card chakra-accordion__item css-1kn1xtl"
+      >
+        <h2
+          class="chakra-heading css-1dklj6k"
+        >
+          <button
+            aria-controls="accordion-panel-:r0:"
+            aria-expanded="false"
+            class="chakra-accordion__button css-ynca4h"
+            data-index="0"
+            id="accordion-button-:r0:"
+            type="button"
+          >
+            <span
+              class="chakra-text css-1eziwv"
+            >
+              How to separate waste for recycling?
+            </span>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          class="chakra-collapse"
+          style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+        >
+          <div
+            aria-labelledby="accordion-button-:r0:"
+            class="chakra-accordion__panel css-z9zv9f"
+            id="accordion-panel-:r0:"
+            role="region"
+          >
+            Place separate bins for different types of waste in a convenient location in your home and Make sure everyone in your household understands the importance of recycling. 
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card chakra-accordion__item css-1kn1xtl"
+      >
+        <h2
+          class="chakra-heading css-1dklj6k"
+        >
+          <button
+            aria-controls="accordion-panel-:r2:"
+            aria-expanded="false"
+            class="chakra-accordion__button css-ynca4h"
+            data-index="1"
+            id="accordion-button-:r2:"
+            type="button"
+          >
+            <span
+              class="chakra-text css-1eziwv"
+            >
+              I've became a collector. How to add a place?
+            </span>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          class="chakra-collapse"
+          style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+        >
+          <div
+            aria-labelledby="accordion-button-:r2:"
+            class="chakra-accordion__panel css-z9zv9f"
+            id="accordion-panel-:r2:"
+            role="region"
+          >
+            Go to account page and click on "Become a collector" button. Then you will be able to add a place.
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card chakra-accordion__item css-1kn1xtl"
+      >
+        <h2
+          class="chakra-heading css-1dklj6k"
+        >
+          <button
+            aria-controls="accordion-panel-:r4:"
+            aria-expanded="false"
+            class="chakra-accordion__button css-ynca4h"
+            data-index="2"
+            id="accordion-button-:r4:"
+            type="button"
+          >
+            <span
+              class="chakra-text css-1eziwv"
+            >
+              How many places can I add?
+            </span>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          class="chakra-collapse"
+          style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+        >
+          <div
+            aria-labelledby="accordion-button-:r4:"
+            class="chakra-accordion__panel css-z9zv9f"
+            id="accordion-panel-:r4:"
+            role="region"
+          >
+            You can add as many places as you want.
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card chakra-accordion__item css-1kn1xtl"
+      >
+        <h2
+          class="chakra-heading css-1dklj6k"
+        >
+          <button
+            aria-controls="accordion-panel-:r6:"
+            aria-expanded="false"
+            class="chakra-accordion__button css-ynca4h"
+            data-index="3"
+            id="accordion-button-:r6:"
+            type="button"
+          >
+            <span
+              class="chakra-text css-1eziwv"
+            >
+              Where is the comments section about places present in the mobile application?
+            </span>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+              />
+            </svg>
+          </button>
+        </h2>
+        <div
+          class="chakra-collapse"
+          style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+        >
+          <div
+            aria-labelledby="accordion-button-:r6:"
+            class="chakra-accordion__panel css-z9zv9f"
+            id="accordion-panel-:r6:"
+            role="region"
+          >
+            The comments about places is not present in the desktop application.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
+
+exports[`Login > should render 1`] = `
+<div>
+  <div
+    class="css-1vm2qft"
+  >
+    <form
+      action="#"
+    >
+      <div
+        class="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-g6pte"
+          for="email"
+          id="field-:r0:-label"
+        >
+          Email
+          <span
+            aria-hidden="true"
+            class="chakra-form__required-indicator css-1tfjd1n"
+            role="presentation"
+          >
+            *
+          </span>
+        </label>
+        <input
+          aria-required="true"
+          class="chakra-input css-1cjy4zv"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required=""
+          value=""
+        />
+      </div>
+      <div
+        class="chakra-form-control css-1mn9ptq"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-g6pte"
+          for="password"
+          id="field-:r1:-label"
+        >
+          Password
+          <span
+            aria-hidden="true"
+            class="chakra-form__required-indicator css-1tfjd1n"
+            role="presentation"
+          >
+            *
+          </span>
+        </label>
+        <input
+          aria-required="true"
+          class="chakra-input css-1cjy4zv"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        class="chakra-button css-13nworv"
+        role="button"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+    <div
+      class="css-0"
+    >
+      <p
+        class="chakra-text css-fckmjt"
+      >
+        Don't have an account?
+        <a
+          href="/sign-up"
+          role="link"
+        >
+          <strong>
+             Register here!
+          </strong>
+        </a>
+      </p>
+      <p
+        class="chakra-text css-1uno72p"
+      >
+        <a
+          href="/forgot-password"
+          role="link"
+        >
+          <strong>
+            Forgot password?
+          </strong>
+        </a>
+      </p>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

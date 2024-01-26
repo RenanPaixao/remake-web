@@ -8,7 +8,13 @@ import {
   FormLabel,
   Heading,
   Input,
-  Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'

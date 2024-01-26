@@ -1,0 +1,110 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Questions list > should render 1`] = `
+<div>
+  <div
+    class="chakra-accordion css-0"
+  >
+    <div
+      class="chakra-card chakra-accordion__item css-14p8q3h"
+    >
+      <h2
+        class="chakra-heading css-1dklj6k"
+      >
+        <button
+          aria-controls="accordion-panel-:r0:"
+          aria-expanded="false"
+          class="chakra-accordion__button css-ynca4h"
+          data-index="0"
+          id="accordion-button-:r0:"
+          type="button"
+        >
+          <span
+            class="chakra-text css-1eziwv"
+          >
+            How to separate waste for recycling?
+          </span>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 448 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        class="chakra-collapse"
+        style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+      >
+        <div
+          aria-labelledby="accordion-button-:r0:"
+          class="chakra-accordion__panel css-z9zv9f"
+          id="accordion-panel-:r0:"
+          role="region"
+        >
+          Place separate bins for different types of waste in a convenient location in your home and Make sure everyone in your household understands the importance of recycling. 
+        </div>
+      </div>
+    </div>
+    <div
+      class="chakra-card chakra-accordion__item css-14p8q3h"
+    >
+      <h2
+        class="chakra-heading css-1dklj6k"
+      >
+        <button
+          aria-controls="accordion-panel-:r2:"
+          aria-expanded="false"
+          class="chakra-accordion__button css-ynca4h"
+          data-index="1"
+          id="accordion-button-:r2:"
+          type="button"
+        >
+          <span
+            class="chakra-text css-1eziwv"
+          >
+            I've became a collector. How to add a place?
+          </span>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 448 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        class="chakra-collapse"
+        style="overflow: hidden; display: none; opacity: 0; height: 0px;"
+      >
+        <div
+          aria-labelledby="accordion-button-:r2:"
+          class="chakra-accordion__panel css-z9zv9f"
+          id="accordion-panel-:r2:"
+          role="region"
+        >
+          Go to account page and click on "Become a collector" button. Then you will be able to add a place.
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

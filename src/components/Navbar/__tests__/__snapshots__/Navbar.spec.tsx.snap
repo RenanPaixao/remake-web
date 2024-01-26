@@ -2,7 +2,7 @@
 
 exports[`Navbar > should render 1`] = `
 <div>
-  <div
+  <nav
     class="css-hboir5"
   >
     <a
@@ -18,10 +18,10 @@ exports[`Navbar > should render 1`] = `
         />
       </div>
     </a>
-    <div
+    <ul
       class="chakra-stack css-azg3gr"
     >
-      <div
+      <li
         class="chakra-stack__item css-1qy82gu"
       >
         <a
@@ -35,8 +35,8 @@ exports[`Navbar > should render 1`] = `
             Home
           </button>
         </a>
-      </div>
-      <div
+      </li>
+      <li
         class="chakra-stack__item css-1qy82gu"
       >
         <a
@@ -50,8 +50,8 @@ exports[`Navbar > should render 1`] = `
             Collect Places
           </button>
         </a>
-      </div>
-      <div
+      </li>
+      <li
         class="chakra-stack__item css-1qy82gu"
       >
         <a
@@ -65,8 +65,8 @@ exports[`Navbar > should render 1`] = `
             FAQ
           </button>
         </a>
-      </div>
-      <div
+      </li>
+      <li
         class="chakra-stack__item css-1qy82gu"
       >
         <a
@@ -80,15 +80,15 @@ exports[`Navbar > should render 1`] = `
             Account
           </button>
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
     <button
       class="chakra-button css-obasgk"
       type="button"
     >
       Logout
     </button>
-  </div>
+  </nav>
   <span
     hidden=""
     id="__chakra_env"
