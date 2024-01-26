@@ -14,6 +14,10 @@ export const FAQPage = () => {
     {
       title: 'How many places can I add?',
       content: 'You can add as many places as you want.'
+    },
+    {
+      title: 'Where is the comments section about places present in the mobile application?',
+      content: 'The comments about places is not present in the desktop application.'
     }
   ]
   return <Center gap={8} pt={10} flexDirection={'column'}>
