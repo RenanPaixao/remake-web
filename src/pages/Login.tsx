@@ -1,9 +1,13 @@
 import { Box, Center, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { LoginForm } from '../components/LoginForm/LoginForm.tsx'
+import { saveLocationOnSessionStorage } from '../utils/location.ts'
 
 export const Login = (): React.JSX.Element => {
+  useEffect(() => {
+    saveLocationOnSessionStorage()
+  })
   return <Center height='100vh' flexDirection='column'>
     <LoginForm />
     <Box>
