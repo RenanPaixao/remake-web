@@ -1,0 +1,88 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Questions list > should render 1`] = `
+<div>
+  <div
+    class="css-k008qs"
+  >
+    <button
+      aria-label="previous button"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+        />
+      </svg>
+    </button>
+    <button
+      aria-label="button page 1"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      1
+    </button>
+    <button
+      aria-label="button page 2"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      2
+    </button>
+    <button
+      aria-label="button page 3"
+      class="chakra-button css-19byqlw"
+      data-active=""
+      type="button"
+    >
+      3
+    </button>
+    <button
+      aria-label="button page 4"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      4
+    </button>
+    <button
+      aria-label="button page 5"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      5
+    </button>
+    <button
+      aria-label="next button"
+      class="chakra-button css-19byqlw"
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+        />
+      </svg>
+    </button>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;

@@ -17,11 +17,12 @@ export const Pagination = (props: IProps) => {
     variant: 'ghost'
   }
   return <Flex gap={gap}>
-    {size <= 1 ? null : <Button {...buttonProps} onClick={onPrevious} isDisabled={activeNumber === 1}><FaArrowLeft /></Button>}
+    <Button aria-label={'previous button'} {...buttonProps} onClick={onPrevious} isDisabled={activeNumber === 1}><FaArrowLeft /></Button>
     {
       Array(size).fill(0).map((_, index) => {
         const current = index + 1
         return <Button
+          aria-label={`button page ${current}`}
           {...buttonProps}
           isActive={current === activeNumber}
           onClick={() => onNumberClick(current)}
@@ -29,6 +30,6 @@ export const Pagination = (props: IProps) => {
         </Button>
       })
     }
-    {size <= 1 ? null : <Button {...buttonProps} onClick={onNext} isDisabled={activeNumber === size}><FaArrowRight /></Button>}
+    <Button aria-label={'next button'} {...buttonProps} onClick={onNext} isDisabled={activeNumber === size}><FaArrowRight /></Button>
   </Flex>
 }
