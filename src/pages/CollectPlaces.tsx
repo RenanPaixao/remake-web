@@ -5,6 +5,7 @@ import { CompanyService, CompanyWithLocations } from '../services/companyService
 import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
 import ReactLoading from 'react-loading'
+import { SearchBar } from '../components/SearchBar/SearchBar.tsx'
 
 export const CollectPlaces = () => {
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
@@ -91,7 +92,14 @@ export const CollectPlaces = () => {
     setCurrentPage(number)
   }
 
-  return <Center py={20} flexDirection={'column'}>
+  return <Center py={10} px={10} flexDirection={'column'}>
+    <Center w={'100%'} py={4}>
+      <SearchBar
+        placeholder={'Search for a place'}
+        isDisabled={isLoading}
+        containerProps={{ display: 'flex', justifyContent: 'center', flexBasis:'40rem' }}
+      />
+    </Center>
     {
       isLoading ?
         <ReactLoading aria-label={'loading'} type={'spin'} color={'#3182ce'} height={100} width={100} /> :
