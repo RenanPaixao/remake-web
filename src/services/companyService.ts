@@ -14,14 +14,16 @@ export interface CompanyWithLocations extends Company {
 
 class PlacesServiceImp {
   queryBuilder = supabase.from('companies')
-  async getAllWithLocations(): Promise<CompanyWithLocations[]> {
-    const { data } = await this.queryBuilder.select('*, locations(*)').throwOnError()
+  async getAllWithLocations(options?: {from:number, to:number}): Promise<CompanyWithLocations[]> {
+    const { data: companies } = options ?
+      await this.queryBuilder.select('*, locations(*)').range(options.from, options.to).throwOnError() :
+      await this.queryBuilder.select('*, locations(*)').throwOnError()
 
-    if (data === null) {
+    if (companies === null) {
       return []
     }
 
-    return data.filter(company => company.locations.length)
+    return companies.filter(company => company.locations.length)
   }
 
   async deleteCompany(id: string): Promise<void> {
@@ -50,6 +52,12 @@ class PlacesServiceImp {
       }
       throw new Error('Error creating company')
     }
+  }
+
+  async countCompanies(): Promise<number> {
+    const { count } = await this.queryBuilder.select('*', { count: 'exact' }).throwOnError()
+
+    return count ?? 0
   }
 }
 

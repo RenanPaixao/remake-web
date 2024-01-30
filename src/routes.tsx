@@ -21,7 +21,6 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        {/*<Route path="/" element={renderWithNavbar(<Home />)} />*/}
         <Route path="/" element={(
           <RouteGuard.NeedsAuthentication>
             <Navbar {...navbarProps}/>
