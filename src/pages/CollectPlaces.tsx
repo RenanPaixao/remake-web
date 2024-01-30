@@ -92,6 +92,14 @@ export const CollectPlaces = () => {
     setCurrentPage(number)
   }
 
+  /**
+   * Show the location on Google Maps.
+   */
+  function showLocationOnMaps(coords: { latitude: number, longitude: number }) {
+    const { latitude, longitude } = coords
+    window.open('https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude, '_blank')
+  }
+
   return <Center py={10} px={10} flexDirection={'column'}>
     <Center w={'100%'} py={4}>
       <SearchBar
@@ -111,7 +119,7 @@ export const CollectPlaces = () => {
             }
 
             return <Center key={location.id} w={'100%'} my={2}>
-              <PlaceCard title={company.name} address={location.name} distance={getDistance(locationCoords)}/>
+              <PlaceCard onClick={() => showLocationOnMaps(locationCoords)} title={company.name} address={location.name} distance={getDistance(locationCoords)}/>
             </Center>
           })
         })
