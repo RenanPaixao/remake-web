@@ -17,11 +17,12 @@ export const CollectPlaces = () => {
   useEffect(() => {
     (async() => {
       setIsLoading(true)
-      const data = await CompanyService.getAllWithLocations({ from: 0, to: 9 })
-      setCompanies(data)
 
       try {
+        const data = await CompanyService.getAllWithLocations({ from: 0, to: 9 })
         const total = await CompanyService.countCompanies()
+
+        setCompanies(data)
         setTotalPages(Math.ceil(total / 10))
       }catch(e: any) {
         console.error(e)
@@ -39,6 +40,7 @@ export const CollectPlaces = () => {
     setPosition(JSON.parse(location))
   }, [])
 
+  // Check if it's possible to use Memoization here.
   useEffect(() => {
     (async() => {
       const from = (currentPage - 1) * 10
@@ -92,7 +94,7 @@ export const CollectPlaces = () => {
   return <Center py={20} flexDirection={'column'}>
     {
       isLoading ?
-        <ReactLoading type={'spin'} color={'#3182ce'} height={100} width={100} /> :
+        <ReactLoading aria-label={'loading'} type={'spin'} color={'#3182ce'} height={100} width={100} /> :
         companies.map(company => {
           return company.locations.map(location => {
             const locationCoords = {
