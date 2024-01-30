@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { CompanyService, CompanyWithLocations } from '../services/companyService.ts'
 import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
+import ReactLoading from 'react-loading'
 
 export const CollectPlaces = () => {
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
@@ -11,8 +12,11 @@ export const CollectPlaces = () => {
   const [totalPages, setTotalPages] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
     (async() => {
+      setIsLoading(true)
       const data = await CompanyService.getAllWithLocations({ from: 0, to: 9 })
       setCompanies(data)
 
@@ -21,6 +25,8 @@ export const CollectPlaces = () => {
         setTotalPages(Math.ceil(total / 10))
       }catch(e: any) {
         console.error(e)
+      }finally{
+        setIsLoading(false)
       }
     })()
 
@@ -37,8 +43,10 @@ export const CollectPlaces = () => {
     (async() => {
       const from = (currentPage - 1) * 10
       const to = from + 10
+      setIsLoading(true)
       const data = await CompanyService.getAllWithLocations({ from, to })
       setCompanies(data)
+      setIsLoading(false)
     })()
   }, [currentPage])
 
@@ -83,18 +91,20 @@ export const CollectPlaces = () => {
 
   return <Center py={20} flexDirection={'column'}>
     {
-      companies.map(company => {
-        return company.locations.map(location => {
-          const locationCoords = {
-            latitude: location.latitude,
-            longitude: location.longitude
-          }
+      isLoading ?
+        <ReactLoading type={'spin'} color={'#3182ce'} height={100} width={100} /> :
+        companies.map(company => {
+          return company.locations.map(location => {
+            const locationCoords = {
+              latitude: location.latitude,
+              longitude: location.longitude
+            }
 
-          return <Center key={location.id} w={'100%'} my={2}>
-            <PlaceCard title={company.name} address={location.name} distance={getDistance(locationCoords)}/>
-          </Center>
+            return <Center key={location.id} w={'100%'} my={2}>
+              <PlaceCard title={company.name} address={location.name} distance={getDistance(locationCoords)}/>
+            </Center>
+          })
         })
-      })
     }
 
     <Box mt={'2rem'}>
