@@ -4,6 +4,25 @@ import { act } from '@testing-library/react'
 import { expect } from 'vitest'
 import { customRender, testingHistory } from '../../../../tests/test-utils.tsx'
 
+type Navigator = {
+  geolocation: {
+    getCurrentPosition: (success: () => void) => void
+  }
+}
+
+(navigator as Navigator).geolocation  = {
+  getCurrentPosition: vi.fn().mockImplementation(success =>
+    Promise.resolve(
+      success({
+        coords: {
+          latitude: 0,
+          longitude: 0
+        }
+      })
+    )
+  )
+}
+
 const mockPushHistory = vi.fn()
 testingHistory.push = mockPushHistory
 
@@ -52,5 +71,11 @@ describe('Login', () => {
         hash: ''
       }
     ]))
+  })
+
+  it('should assert that location is being saved on sessionStorage', async () => {
+    customRender(<Login/>)
+
+    expect(sessionStorage.getItem('location')).toEqual(JSON.stringify({ latitude:0,longitude:0 }))
   })
 })
