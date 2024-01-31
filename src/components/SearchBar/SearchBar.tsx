@@ -8,16 +8,41 @@ import {
   Button
 } from '@chakra-ui/react'
 import { FaSearch } from 'react-icons/fa'
+import React, { ChangeEvent, useState } from 'react'
 
 interface IProps extends InputProps{
-  containerProps?: InputGroupProps
+  containerProps?: InputGroupProps,
+  onSearch: (value: string) => void
 }
 export const SearchBar = (props: IProps) => {
-  const { containerProps } = props
+  const { containerProps, onSearch, ...rest } = props
+  const [value, setValue] = useState<string>('')
 
-  const inputProps = {
-    ...props,
-    containerProps: undefined
+  /**
+   * Handle the event when the user types in the input.
+   * @param e
+   */
+  function handleChangeEvent(e:ChangeEvent<HTMLInputElement>) {
+    setValue(e.target.value)
+  }
+
+  /**
+   * Handle the event when the input loses focus.
+   */
+  function handleBlur(e: ChangeEvent<HTMLInputElement>) {
+    if(e.target.value === '') {
+      onSearch('')
+    }
+  }
+
+  /**
+   * Handle the event when the user presses a key.
+   * @param e
+   */
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if(e.key === 'Enter') {
+      onSearch(value)
+    }
   }
 
   return <InputGroup {...containerProps}>
@@ -25,7 +50,12 @@ export const SearchBar = (props: IProps) => {
       <FaSearch color={'var(--chakra-colors-gray-400)'}/>
     </InputLeftElement>
     <Input
-      {...inputProps}
+      {...rest}
+      type={'search'}
+      value={value}
+      onChange={handleChangeEvent}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
       aria-label={'search bar'}
       colorScheme={'blue'}
       borderBottomRightRadius={'md'}
@@ -33,7 +63,7 @@ export const SearchBar = (props: IProps) => {
       borderRadius={'md'}
     />
     <InputRightAddon bg={'transparent'} padding={2} border={'none'}>
-      <Button colorScheme={'blue'}>Search</Button>
+      <Button onClick={() => onSearch(value)} colorScheme={'blue'}>Search</Button>
     </InputRightAddon>
   </InputGroup>
 }

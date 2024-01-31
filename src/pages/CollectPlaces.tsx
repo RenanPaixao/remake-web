@@ -100,9 +100,25 @@ export const CollectPlaces = () => {
     window.open('https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude, '_blank')
   }
 
+  /**
+   * Search for a place.
+   * @param value
+   */
+  async function onSearch(value: string) {
+    setIsLoading(true)
+    const hasValue = value.trim() !== ''
+    const data = hasValue ?
+      await CompanyService.searchCompanies(value) :
+      await CompanyService.getAllWithLocations({ from: 0, to: 9 })
+
+    setCompanies(data)
+    setIsLoading(false)
+  }
+
   return <Center py={10} px={10} flexDirection={'column'}>
     <Center w={'100%'} py={4}>
       <SearchBar
+        onSearch={onSearch}
         placeholder={'Search for a place'}
         isDisabled={isLoading}
         containerProps={{ display: 'flex', justifyContent: 'center', flexBasis:'40rem' }}

@@ -13,11 +13,30 @@ export interface CompanyWithLocations extends Company {
 }
 
 class PlacesServiceImp {
-  queryBuilder = supabase.from('companies')
+  // Disabling the rule to keep the inference of the return type of this method.
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  get queryBuilder() {
+    return supabase.from('companies')
+  }
   async getAllWithLocations(options?: {from:number, to:number}): Promise<CompanyWithLocations[]> {
     const { data: companies } = options ?
       await this.queryBuilder.select('*, locations(*)').range(options.from, options.to).throwOnError() :
       await this.queryBuilder.select('*, locations(*)').throwOnError()
+
+    if (companies === null) {
+      return []
+    }
+
+    return companies.filter(company => company.locations.length)
+  }
+
+  async searchCompanies(query: string): Promise<CompanyWithLocations[]> {
+    const { data: companies } = await this.queryBuilder
+      .select('*, locations(*)')
+      .textSearch('name', `${query}`, {
+        type: 'websearch'
+      })
+      .throwOnError()
 
     if (companies === null) {
       return []
