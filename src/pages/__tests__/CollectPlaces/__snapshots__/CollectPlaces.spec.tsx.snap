@@ -34,6 +34,8 @@ exports[`CollectPlaces > should render 1`] = `
           aria-label="search bar"
           class="chakra-input css-tiw55w"
           placeholder="Search for a place"
+          type="search"
+          value=""
         />
         <div
           class="chakra-input__right-addon css-x8mdnz"

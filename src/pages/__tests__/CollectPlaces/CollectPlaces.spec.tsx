@@ -7,10 +7,15 @@ import { expect } from 'vitest'
 
 CompanyService.getAllWithLocations = vi.fn().mockImplementation(async () => {
   setTimeout(() => {
-    return Promise.resolve(COMPANIES)
+    return Promise.resolve({
+      companies: COMPANIES,
+      count: 100
+    })
   }, 2000)
-}).mockResolvedValue(COMPANIES)
-CompanyService.countCompanies = vi.fn().mockResolvedValue(100)
+}).mockResolvedValue({
+  companies: COMPANIES,
+  count: 100
+})
 sessionStorage.getItem = vi.fn().mockReturnValue(JSON.stringify(POSITION))
 
 describe('CollectPlaces', () => {
