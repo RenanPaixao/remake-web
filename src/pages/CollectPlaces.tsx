@@ -20,11 +20,10 @@ export const CollectPlaces = () => {
       setIsLoading(true)
 
       try {
-        const data = await CompanyService.getAllWithLocations({ from: 0, to: 9 })
-        const total = await CompanyService.countCompanies()
+        const { companies, count } = await CompanyService.getAllWithLocations({ from: 0, to: 9 })
 
-        setCompanies(data)
-        setTotalPages(Math.ceil(total / 10))
+        setCompanies(companies)
+        setTotalPages(Math.ceil(count / 10))
       }catch(e: any) {
         console.error(e)
       }finally{
@@ -41,18 +40,6 @@ export const CollectPlaces = () => {
     setPosition(JSON.parse(location))
   }, [])
 
-  // Check if it's possible to use Memoization here.
-  useEffect(() => {
-    (async() => {
-      const from = (currentPage - 1) * 10
-      const to = from + 10
-      setIsLoading(true)
-      const data = await CompanyService.getAllWithLocations({ from, to })
-      setCompanies(data)
-      setIsLoading(false)
-    })()
-  }, [currentPage])
-
   /**
    * Get the distance between the current position and the given position.
    * @param position
@@ -67,17 +54,33 @@ export const CollectPlaces = () => {
   }
 
   /**
+   * Handle the page change in pagination.
+   * @param page
+   */
+  async function handlePageChange(page: number): Promise<void> {
+    setIsLoading(true)
+    setCurrentPage(page)
+    const from = (page - 1) * 10
+    const to = from + 10
+    const { companies } = await CompanyService.getAllWithLocations({ from, to })
+    setCompanies(companies)
+    setIsLoading(false)
+  }
+
+  /**
    * Go to the previous page.
    */
   async function onPrevious(): Promise<void> {
-    setCurrentPage(prevState => prevState - 1)
+    const previousPage = currentPage - 1
+    await handlePageChange(previousPage)
   }
 
   /**
    * Go to the next page.
    */
   async function onNext(): Promise<void> {
-    setCurrentPage(prevState => prevState + 1)
+    const nextPage = currentPage + 1
+    await handlePageChange(nextPage)
   }
 
   /**
@@ -88,8 +91,7 @@ export const CollectPlaces = () => {
     if(number === currentPage) {
       return
     }
-
-    setCurrentPage(number)
+    await handlePageChange(number)
   }
 
   /**
@@ -107,11 +109,13 @@ export const CollectPlaces = () => {
   async function onSearch(value: string) {
     setIsLoading(true)
     const hasValue = value.trim() !== ''
-    const data = hasValue ?
+    const { companies, count } = hasValue ?
       await CompanyService.searchCompanies(value) :
       await CompanyService.getAllWithLocations({ from: 0, to: 9 })
 
-    setCompanies(data)
+    setCompanies(companies)
+    setTotalPages(Math.ceil(count / 10))
+    setCurrentPage(1)
     setIsLoading(false)
   }
 

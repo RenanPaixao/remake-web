@@ -18,31 +18,43 @@ class PlacesServiceImp {
   get queryBuilder() {
     return supabase.from('companies')
   }
-  async getAllWithLocations(options?: {from:number, to:number}): Promise<CompanyWithLocations[]> {
-    const { data: companies } = options ?
-      await this.queryBuilder.select('*, locations(*)').range(options.from, options.to).throwOnError() :
-      await this.queryBuilder.select('*, locations(*)').throwOnError()
+  async getAllWithLocations(options?: {from:number, to:number}): Promise<{ count: number, companies: CompanyWithLocations[] }> {
+    const { data: companies, count } = options ?
+      await this.queryBuilder.select('*, locations(*)', { count: 'exact' }).range(options.from, options.to).throwOnError() :
+      await this.queryBuilder.select('*, locations(*)', { count: 'exact' }).throwOnError()
 
     if (companies === null) {
-      return []
+      return {
+        companies: [],
+        count: 0
+      }
     }
 
-    return companies.filter(company => company.locations.length)
+    return {
+      companies: companies.filter(company => company.locations.length),
+      count: count ?? 0
+    }
   }
 
-  async searchCompanies(query: string): Promise<CompanyWithLocations[]> {
-    const { data: companies } = await this.queryBuilder
-      .select('*, locations(*)')
+  async searchCompanies(query: string): Promise<{ count: number, companies: CompanyWithLocations[] }> {
+    const { data: companies, count } = await this.queryBuilder
+      .select('*, locations(*)', { count: 'exact' })
       .textSearch('name', `${query}`, {
         type: 'websearch'
       })
       .throwOnError()
 
     if (companies === null) {
-      return []
+      return {
+        companies: [],
+        count: 0
+      }
     }
 
-    return companies.filter(company => company.locations.length)
+    return {
+      companies: companies.filter(company => company.locations.length),
+      count: count ?? 0
+    }
   }
 
   async deleteCompany(id: string): Promise<void> {
@@ -71,12 +83,6 @@ class PlacesServiceImp {
       }
       throw new Error('Error creating company')
     }
-  }
-
-  async countCompanies(): Promise<number> {
-    const { count } = await this.queryBuilder.select('*', { count: 'exact' }).throwOnError()
-
-    return count ?? 0
   }
 }
 
