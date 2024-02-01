@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { FaSearch } from 'react-icons/fa'
 import React, { ChangeEvent, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 interface IProps extends InputProps{
   containerProps?: InputGroupProps,
@@ -17,6 +18,20 @@ interface IProps extends InputProps{
 export const SearchBar = (props: IProps) => {
   const { containerProps, onSearch, ...rest } = props
   const [value, setValue] = useState<string>('')
+  const [searchParams, setSearchParams] = useSearchParams({ search: '' })
+
+  /**
+   * Does the search using the callback function and updates the search params.
+   * @param value
+   */
+  function search(value: string) {
+    if(value === searchParams.get('search')) {
+      return
+    }
+
+    onSearch(value)
+    setSearchParams({ search: value }, { replace: true })
+  }
 
   /**
    * Handle the event when the user types in the input.
@@ -31,7 +46,7 @@ export const SearchBar = (props: IProps) => {
    */
   function handleBlur(e: ChangeEvent<HTMLInputElement>) {
     if(e.target.value === '') {
-      onSearch('')
+      search('')
     }
   }
 
@@ -41,7 +56,7 @@ export const SearchBar = (props: IProps) => {
    */
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if(e.key === 'Enter') {
-      onSearch(value)
+      search(value)
     }
   }
 
@@ -63,7 +78,7 @@ export const SearchBar = (props: IProps) => {
       borderRadius={'md'}
     />
     <InputRightAddon bg={'transparent'} padding={2} border={'none'}>
-      <Button onClick={() => onSearch(value)} colorScheme={'blue'}>Search</Button>
+      <Button onClick={() => search(value)} colorScheme={'blue'}>Search</Button>
     </InputRightAddon>
   </InputGroup>
 }
