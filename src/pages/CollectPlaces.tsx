@@ -1,10 +1,9 @@
-import { Box, Center } from '@chakra-ui/react'
+import { Box, Center, Spinner } from '@chakra-ui/react'
 import { PlaceCard } from '../components/PlaceCard/PlaceCard.tsx'
 import { useEffect, useState } from 'react'
 import { CompanyService, CompanyWithLocations } from '../services/companyService.ts'
 import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
-import ReactLoading from 'react-loading'
 import { SearchBar } from '../components/SearchBar/SearchBar.tsx'
 import { saveLocationOnSessionStorage } from '../utils/location.ts'
 
@@ -136,7 +135,15 @@ export const CollectPlaces = () => {
     </Center>
     {
       isLoading ?
-        <ReactLoading aria-label={'loading'} type={'spin'} color={'#3182ce'} height={100} width={100} /> :
+        <Spinner
+          aria-label={'loading'}
+          thickness='8px'
+          emptyColor={'gray.200'}
+          color={'blue.500'}
+          speed='0.65s'
+          height={100}
+          width={100}
+        /> :
         companies.map(company => {
           return company.locations.map(location => {
             const locationCoords = {
