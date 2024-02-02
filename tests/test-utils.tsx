@@ -3,8 +3,10 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { ReactElement } from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from '@remix-run/router'
+import { userEvent } from '@testing-library/user-event'
 
 const testingHistory = createMemoryHistory()
+const user = userEvent.setup()
 
 // Disabled due to not needing to export a component.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -33,5 +35,6 @@ function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>
 
 export {
   customRender,
-  testingHistory
+  testingHistory,
+  user
 }

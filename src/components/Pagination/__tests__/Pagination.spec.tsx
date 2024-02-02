@@ -47,6 +47,7 @@ describe('Pagination', () => {
     expect(nextButton).toBeDisabled()
     expect(previousButton).toBeEnabled()
   })
+
   it('should trigger actions', async () => {
     const { getByRole } = customRender(<Pagination
       size={pages}
