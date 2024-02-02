@@ -15,11 +15,13 @@ import { useContext, useEffect, useState } from 'react'
 import { CompanyService, CompanyWithLocations } from '../services/companyService.ts'
 import { PlaceCard } from '../components/PlaceCard/PlaceCard.tsx'
 import { showLocationOnMaps } from '../utils/location.ts'
+import { useNavigate } from 'react-router-dom'
 
 export const Account = () => {
   const { userInformation } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
+  const navigate = useNavigate()
 
   const { id: userId, email, fullName, isRecycler } = userInformation
 
@@ -50,6 +52,7 @@ export const Account = () => {
     return companies.map(company => {
       return company.locations.map(location => {
         return <PlaceCard
+          key={location.id}
           flexBasis={'15rem'}
           title={company.name}
           distance={''}
@@ -58,6 +61,13 @@ export const Account = () => {
         />
       })
     })
+  }
+
+  /**
+   * Navigate to the add place page.
+   */
+  function goToAddPlace() {
+    navigate('/add-place')
   }
 
   return <Center py={10} w={'100%'} >
@@ -103,7 +113,7 @@ export const Account = () => {
       </CardBody>
       <CardFooter justifyContent={'center'}>
         {isRecycler  ?
-          <Button colorScheme={'blue'}>Add New Place</Button> :
+          <Button colorScheme={'blue'} onClick={goToAddPlace}>Add New Place</Button> :
           <Button colorScheme={'blue'}>Become a recycler</Button>
         }
       </CardFooter>

@@ -11,7 +11,7 @@ export interface LocationWithoutCoordinates {
   cep: string
   name: string
   state: string
-  number: number
+  number: number | string
   complement?: string
   city: string
   district: string
