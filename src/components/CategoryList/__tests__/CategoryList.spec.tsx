@@ -11,4 +11,19 @@ describe('CategoryList', () => {
 
     expect(container).toMatchSnapshot()
   })
+
+  it('should navigate to the collect-places page with the given category', async () => {
+    const { getAllByRole } = customRender(<CategoryList/>)
+    const buttons = getAllByRole('button')
+
+    buttons.forEach(button => {
+      mockPushHistory.mockClear()
+      button.click()
+      expect(mockPushHistory).toHaveBeenCalledWith({
+        'hash': '',
+        'pathname': '/collect-places/',
+        'search': `?tags=${button.textContent}`
+      }, undefined, {})
+    })
+  })
 })

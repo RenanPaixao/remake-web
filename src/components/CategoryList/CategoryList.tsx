@@ -4,8 +4,8 @@ import { GiSteelClaws } from 'react-icons/gi'
 import { RiCopperCoinLine } from 'react-icons/ri'
 import { LiaDrumSteelpanSolid, LiaWineGlassSolid } from 'react-icons/lia'
 import { FaBoxOpen, FaRegNewspaper } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
-// TODO: create unit tests for CategoryItem component
 export const CategoryList = () => {
   const iconSize = '2rem'
   const categories = [
@@ -46,10 +46,25 @@ export const CategoryList = () => {
       title: 'Boxes'
     }
   ]
+
+  const navigate = useNavigate()
+
+  /**
+   * Redirects the user to the collect-places page with the given category.
+   * @param title
+   */
+  function goToCategory(title: string) {
+    navigate(`/collect-places/?tags=${title}`)
+  }
+
   return <SimpleGrid columns={[2, 2, 3]} spacing='2rem' >
     {
       categories.map(({ title, icon }) => (
-        <Button key={title} leftIcon={icon} p='2rem' >
+        <Button
+          key={title}
+          leftIcon={icon} p='2rem'
+          onClick={() => goToCategory(title)}
+        >
           {title}
         </Button>
       ))
