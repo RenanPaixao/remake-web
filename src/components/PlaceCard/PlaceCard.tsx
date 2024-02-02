@@ -20,7 +20,7 @@ export const PlaceCard = (props: IProps) => {
       </Text>
     </CardHeader>
 
-    <CardFooter alignItems={'center'}>
+    <CardFooter alignItems={'center'} mt={'auto'}>
       <Text display={'box'} pr={'1rem'} textAlign={'left'}>{address}</Text>
       <Button onClick={onClick} colorScheme={'blue'} ml={'auto'}>Go!</Button>
     </CardFooter>

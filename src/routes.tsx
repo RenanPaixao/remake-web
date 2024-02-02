@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar/Navbar.tsx'
 import { RouteGuard } from './components/RouteGuard'
 import { FAQPage } from './pages/FAQPage.tsx'
 import { CollectPlaces } from './pages/CollectPlaces.tsx'
+import { Account } from './pages/Account.tsx'
 
 const navbarProps = {
   p: '1.3rem 3rem',
@@ -52,6 +53,12 @@ export default function AppRouter() {
           <RouteGuard.NeedsAuthentication>
             <Navbar {...navbarProps}/>
             <CollectPlaces />
+          </RouteGuard.NeedsAuthentication>
+        } />
+        <Route path="/account" element={
+          <RouteGuard.NeedsAuthentication>
+            <Navbar {...navbarProps}/>
+            <Account />
           </RouteGuard.NeedsAuthentication>
         } />
         <Route path="*" element={<NotFound />} />

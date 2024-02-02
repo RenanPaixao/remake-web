@@ -19,3 +19,11 @@ export function saveLocationOnSessionStorage(): void {
 
   navigator.geolocation.getCurrentPosition(onSuccess, onError, options)
 }
+
+/**
+ * Show the location on Google Maps.
+ */
+export function showLocationOnMaps(coords: { latitude: number, longitude: number }): void {
+  const { latitude, longitude } = coords
+  window.open('https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude, '_blank')
+}

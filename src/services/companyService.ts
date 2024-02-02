@@ -84,6 +84,19 @@ class PlacesServiceImp {
       throw new Error('Error creating company')
     }
   }
+
+  async getUserPlaces(userId: string): Promise<CompanyWithLocations[]> {
+    const { data: companies } = await this.queryBuilder
+      .select('*, locations(*)')
+      .eq('owner_id', userId)
+      .throwOnError()
+
+    if (companies === null) {
+      return []
+    }
+
+    return companies.filter(company => company.locations.length)
+  }
 }
 
 export const CompanyService = new PlacesServiceImp()

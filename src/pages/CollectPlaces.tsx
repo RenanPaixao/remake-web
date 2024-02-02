@@ -5,7 +5,7 @@ import { CompanyService, CompanyWithLocations } from '../services/companyService
 import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
 import { SearchBar } from '../components/SearchBar/SearchBar.tsx'
-import { saveLocationOnSessionStorage } from '../utils/location.ts'
+import { saveLocationOnSessionStorage, showLocationOnMaps } from '../utils/location.ts'
 
 export const CollectPlaces = () => {
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
@@ -97,14 +97,6 @@ export const CollectPlaces = () => {
       return
     }
     await handlePageChange(number)
-  }
-
-  /**
-   * Show the location on Google Maps.
-   */
-  function showLocationOnMaps(coords: { latitude: number, longitude: number }) {
-    const { latitude, longitude } = coords
-    window.open('https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude, '_blank')
   }
 
   /**
