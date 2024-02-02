@@ -6,6 +6,7 @@ import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
 import ReactLoading from 'react-loading'
 import { SearchBar } from '../components/SearchBar/SearchBar.tsx'
+import { saveLocationOnSessionStorage } from '../utils/location.ts'
 
 export const CollectPlaces = () => {
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
@@ -33,7 +34,12 @@ export const CollectPlaces = () => {
 
     const location = sessionStorage.getItem('location')
     if(!location) {
-      console.error('No location found')
+      navigator.geolocation.getCurrentPosition(async position => {
+        const { latitude, longitude } = position.coords
+        setPosition({ latitude, longitude })
+      })
+
+      saveLocationOnSessionStorage()
       return
     }
 
