@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PlaceCard > should render 1`] = `
+<div>
+  <div
+    class="chakra-card css-1101n89"
+  >
+    <div
+      class="chakra-card__header css-1fj4epu"
+    >
+      <h3
+        class="chakra-heading css-1q6o3tu"
+      >
+        Place Title
+      </h3>
+      <h5
+        class="chakra-text css-1vuos2j"
+      >
+        60 KM
+      </h5>
+    </div>
+    <div
+      class="chakra-card__footer css-1r7igq6"
+    >
+      <p
+        class="chakra-text css-cg4qa7"
+      >
+        Place Address
+      </p>
+      <button
+        class="chakra-button css-1noe2cj"
+        type="button"
+      >
+        Go!
+      </button>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
