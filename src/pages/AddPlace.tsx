@@ -63,6 +63,7 @@ export const AddPlace = () => {
     onSubmit: async values => {
       try{
         if(userInformation.id === null) {
+          navigate('/login')
           return
         }
 
@@ -84,11 +85,12 @@ export const AddPlace = () => {
           longitude: parseFloat(values.longitude)
         })
 
-        setIsLoading(false)
         successToast({ description: 'Place added successfully' })
         navigate('/account')
       }catch(e) {
         console.error(e)
+      }finally{
+        setIsLoading(false)
       }
     },
     validateOnBlur: true
@@ -98,12 +100,6 @@ export const AddPlace = () => {
   const fieldNames = Object.keys(initialValues) as (keyof FormValues)[]
   const requiredFields = fieldNames.filter(key => key !== 'complement')
 
-  /**
-   * Navigate back to the account page.
-   */
-  function backToAccount() {
-    navigate('/account')
-  }
   return <Center pt={4} flexDirection={'column'}>
     <Heading py={16}>Add Collect Place</Heading>
     <form onSubmit={formik.handleSubmit}>
@@ -141,7 +137,7 @@ export const AddPlace = () => {
             isLoading={isLoading}
             isDisabled={isLoading}
             colorScheme={'blue'}
-            onClick={backToAccount}
+            onClick={() => navigate('/account')}
             leftIcon={<FaArrowLeft/>}>
             Account
           </Button>
@@ -149,7 +145,7 @@ export const AddPlace = () => {
         <Flex justifyContent={'start'}>
           <Button colorScheme={'blue'}
             isLoading={isLoading}
-            isDisabled={isLoading}
+            isDisabled={isLoading || !formik.isValid || !formik.dirty}
             rightIcon={<FaPlus/>}
             onClick={() => formik.handleSubmit()}
           >

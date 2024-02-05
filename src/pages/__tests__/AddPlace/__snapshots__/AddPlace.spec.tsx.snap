@@ -1,0 +1,426 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AddPlace > should render 1`] = `
+<div>
+  <div
+    class="css-4j83h5"
+  >
+    <h2
+      class="chakra-heading css-1wh6evl"
+    >
+      Add Collect Place
+    </h2>
+    <form>
+      <div
+        class="css-14i3gmy"
+      >
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="company_name"
+            id="field-:r0:-label"
+          >
+            Company Name
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Company Name"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r0:"
+            name="company_name"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="cep"
+            id="field-:r1:-label"
+          >
+            Cep
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Cep"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r1:"
+            name="cep"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="street"
+            id="field-:r2:-label"
+          >
+            Street
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Street"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r2:"
+            name="street"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="state"
+            id="field-:r3:-label"
+          >
+            State
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="State"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r3:"
+            name="state"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="number"
+            id="field-:r4:-label"
+          >
+            Number
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Number"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r4:"
+            name="number"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="complement"
+            id="field-:r5:-label"
+          >
+            Complement
+          </label>
+          <input
+            aria-label="Complement"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r5:"
+            name="complement"
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="city"
+            id="field-:r6:-label"
+          >
+            City
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="City"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r6:"
+            name="city"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="district"
+            id="field-:r7:-label"
+          >
+            District
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="District"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r7:"
+            name="district"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="openning_hour"
+            id="field-:r8:-label"
+          >
+            Openning Hour
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Openning Hour"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r8:"
+            name="openning_hour"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="closing_hour"
+            id="field-:r9:-label"
+          >
+            Closing Hour
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Closing Hour"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:r9:"
+            name="closing_hour"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="latitude"
+            id="field-:ra:-label"
+          >
+            Latitude
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Latitude"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:ra:"
+            name="latitude"
+            required=""
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-form-control css-1mn9ptq"
+          role="group"
+        >
+          <label
+            class="chakra-form__label css-g6pte"
+            for="longitude"
+            id="field-:rb:-label"
+          >
+            Longitude
+            <span
+              aria-hidden="true"
+              class="chakra-form__required-indicator css-1tfjd1n"
+              role="presentation"
+            >
+              *
+            </span>
+          </label>
+          <input
+            aria-label="Longitude"
+            aria-required="true"
+            class="chakra-input css-1cjy4zv"
+            id="field-:rb:"
+            name="longitude"
+            required=""
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="chakra-form-control css-1kxonj9"
+        role="group"
+      >
+        <div
+          class="chakra-form__helper-text css-186pyma"
+          id="field-:rc:-helptext"
+        >
+          You can get the latitude and longitude searching for the place address in google maps
+        </div>
+      </div>
+      <div
+        class="css-1dcc61u"
+      >
+        <div
+          class="css-ckyhk3"
+        >
+          <button
+            class="chakra-button css-pejez8"
+            type="button"
+          >
+            <span
+              class="chakra-button__icon css-1wh2kri"
+            >
+              <svg
+                aria-hidden="true"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                />
+              </svg>
+            </span>
+            Account
+          </button>
+        </div>
+        <div
+          class="css-8owaep"
+        >
+          <button
+            class="chakra-button css-jut409"
+            disabled=""
+            type="button"
+          >
+            Add Place
+            <span
+              class="chakra-button__icon css-1hzyiq5"
+            >
+              <svg
+                aria-hidden="true"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 448 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
