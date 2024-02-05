@@ -1,9 +1,7 @@
-import { customRender, user } from '../../../../tests/test-utils.tsx'
+import { renderWithUserContext, user } from '../../../../tests/test-utils.tsx'
 import { CompanyService } from '../../../services/companyService.ts'
 import { waitFor } from '@testing-library/dom'
 import { expect } from 'vitest'
-import { ReactElement } from 'react'
-import { UserContext } from '../../../context/UserContext.tsx'
 import { Account } from '../../Account.tsx'
 import { ACCOUNT_COMPANIES } from './mock.ts'
 
@@ -19,22 +17,6 @@ const mockCompanies = (companies: typeof ACCOUNT_COMPANIES) => {
       return Promise.resolve(companies)
     }, 2000)
   }).mockResolvedValue(companies)
-}
-
-const renderWithUserContext = (ui: ReactElement) => {
-  return customRender(
-    <UserContext.Provider value={{
-      userInformation: {
-        id: '39f35111-a2d7-48c2-8b0a-ed0a70ed79c6',
-        email: 'test.email@email.com',
-        fullName: 'john doe',
-        isRecycler: true
-      },
-      isAuthenticated: true
-    }}>
-      {ui}
-    </UserContext.Provider>
-  )
 }
 
 describe('Account', () => {

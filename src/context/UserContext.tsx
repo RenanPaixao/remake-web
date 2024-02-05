@@ -1,7 +1,7 @@
 import { createContext, PropsWithChildren, useEffect, useMemo, useState } from 'react'
 import { supabase } from '../utils/supabase.ts'
 
-interface IProps{
+export interface IProps{
   isAuthenticated: boolean
   userInformation: UserInformation
 }
