@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NotFound > should render 1`] = `
+<div>
+  <div
+    class="css-1h2nyg0"
+  >
+    <img
+      alt="Remake logo"
+      class="chakra-image css-ibmrth"
+      src="/src/assets/logo.webp"
+    />
+    <h1
+      class="chakra-heading css-gqdkvc"
+    >
+      Page Not found! 
+    </h1>
+    <button
+      class="chakra-button css-jut409"
+      type="button"
+    >
+      Go back
+    </button>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
