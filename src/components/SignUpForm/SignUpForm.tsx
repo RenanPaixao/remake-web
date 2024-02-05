@@ -69,7 +69,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='firstName'>First Name</FormLabel>
       <Input
         name='firstName'
-        title='First Name'
+        aria-label='First Name'
         onChange={formik.handleChange}
         value={formik.values.firstName}
         onBlur={formik.handleBlur}
@@ -81,7 +81,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='lastName'>Last Name</FormLabel>
       <Input
         name='lastName'
-        title={'Last Name'}
+        aria-label={'Last Name'}
         onChange={formik.handleChange}
         value={formik.values.lastName}
         onBlur={formik.handleBlur}
@@ -93,7 +93,7 @@ export const SignUpForm = () => {
       <FormLabel htmlFor='email'>Email</FormLabel>
       <Input
         name='email'
-        title={'email'}
+        aria-label={'email'}
         onChange={formik.handleChange}
         value={formik.values.email}
         onBlur={formik.handleBlur}
@@ -107,7 +107,7 @@ export const SignUpForm = () => {
       <Input
         data-testid={'password-input'}
         name='password'
-        title={'password'}
+        aria-label={'password'}
         type={'password'}
         onChange={formik.handleChange}
         value={formik.values.password}
