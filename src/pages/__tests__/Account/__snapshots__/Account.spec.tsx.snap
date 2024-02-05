@@ -1,0 +1,202 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Account > should render 1`] = `
+<div>
+  <div
+    class="css-1udqmu9"
+  >
+    <div
+      class="chakra-card css-10ospwz"
+    >
+      <div
+        class="chakra-card__header css-1sl53ol"
+      >
+        <span
+          class="chakra-avatar css-j6purw"
+        >
+          <div
+            aria-label="john doe"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            jd
+          </div>
+        </span>
+      </div>
+      <div
+        class="chakra-card__body css-1idwstw"
+      >
+        <h1
+          class="chakra-heading css-1dklj6k"
+        >
+          john doe
+        </h1>
+        <p
+          class="chakra-text css-0"
+        >
+          test.email@email.com
+        </p>
+        <h2
+          class="chakra-heading css-nvrxd0"
+        >
+          Your places
+        </h2>
+        <div
+          class="css-1jrpzwu"
+        >
+          <div
+            class="chakra-card css-1tcl4hn"
+          >
+            <div
+              class="chakra-card__header css-1fj4epu"
+            >
+              <h3
+                class="chakra-heading css-1q6o3tu"
+              >
+                testedoteste
+              </h3>
+              <h5
+                class="chakra-text css-1vuos2j"
+              />
+            </div>
+            <div
+              class="chakra-card__footer css-1r7igq6"
+            >
+              <p
+                class="chakra-text css-cg4qa7"
+              >
+                rua, Carpina, pe
+              </p>
+              <button
+                class="chakra-button css-1noe2cj"
+                type="button"
+              >
+                Go!
+              </button>
+            </div>
+          </div>
+          <div
+            class="chakra-card css-1tcl4hn"
+          >
+            <div
+              class="chakra-card__header css-1fj4epu"
+            >
+              <h3
+                class="chakra-heading css-1q6o3tu"
+              >
+                Empresa - Derby
+              </h3>
+              <h5
+                class="chakra-text css-1vuos2j"
+              />
+            </div>
+            <div
+              class="chakra-card__footer css-1r7igq6"
+            >
+              <p
+                class="chakra-text css-cg4qa7"
+              >
+                principal teste, recife, pernambuco
+              </p>
+              <button
+                class="chakra-button css-1noe2cj"
+                type="button"
+              >
+                Go!
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card__footer css-1l9v0bz"
+      >
+        <button
+          class="chakra-button css-jut409"
+          type="button"
+        >
+          Add New Place
+        </button>
+      </div>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
+
+exports[`Account > should render when have no companies 1`] = `
+<div>
+  <div
+    class="css-1udqmu9"
+  >
+    <div
+      class="chakra-card css-10ospwz"
+    >
+      <div
+        class="chakra-card__header css-1sl53ol"
+      >
+        <span
+          class="chakra-avatar css-j6purw"
+        >
+          <div
+            aria-label="john doe"
+            class="chakra-avatar__initials css-1ebyn6"
+            role="img"
+          >
+            jd
+          </div>
+        </span>
+      </div>
+      <div
+        class="chakra-card__body css-1idwstw"
+      >
+        <h1
+          class="chakra-heading css-1dklj6k"
+        >
+          john doe
+        </h1>
+        <p
+          class="chakra-text css-0"
+        >
+          test.email@email.com
+        </p>
+        <h2
+          class="chakra-heading css-nvrxd0"
+        >
+          Your places
+        </h2>
+        <div
+          class="css-1jrpzwu"
+        >
+          <div
+            class="css-gmuwbf"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              You don't have any places yet.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card__footer css-1l9v0bz"
+      >
+        <button
+          class="chakra-button css-jut409"
+          type="button"
+        >
+          Add New Place
+        </button>
+      </div>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
