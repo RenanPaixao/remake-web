@@ -22,12 +22,12 @@ exports[`SignUpForm > should render 1`] = `
         </span>
       </label>
       <input
+        aria-label="First Name"
         aria-required="true"
         class="chakra-input css-1cjy4zv"
         id="field-:r0:"
         name="firstName"
         required=""
-        title="First Name"
         value=""
       />
     </div>
@@ -50,12 +50,12 @@ exports[`SignUpForm > should render 1`] = `
         </span>
       </label>
       <input
+        aria-label="Last Name"
         aria-required="true"
         class="chakra-input css-1cjy4zv"
         id="field-:r1:"
         name="lastName"
         required=""
-        title="Last Name"
         value=""
       />
     </div>
@@ -78,12 +78,12 @@ exports[`SignUpForm > should render 1`] = `
         </span>
       </label>
       <input
+        aria-label="email"
         aria-required="true"
         class="chakra-input css-1cjy4zv"
         id="field-:r2:"
         name="email"
         required=""
-        title="email"
         type="email"
         value=""
       />
@@ -107,13 +107,13 @@ exports[`SignUpForm > should render 1`] = `
         </span>
       </label>
       <input
+        aria-label="password"
         aria-required="true"
         class="chakra-input css-1cjy4zv"
         data-testid="password-input"
         id="field-:r3:"
         name="password"
         required=""
-        title="password"
         type="password"
         value=""
       />

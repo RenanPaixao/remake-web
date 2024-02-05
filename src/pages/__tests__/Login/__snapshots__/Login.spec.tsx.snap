@@ -3,8 +3,13 @@
 exports[`Login > should render 1`] = `
 <div>
   <div
-    class="css-1vm2qft"
+    class="css-b93e9j"
   >
+    <img
+      alt="Remake logo"
+      class="chakra-image css-ibmrth"
+      src="/src/assets/logo.webp"
+    />
     <form
       action="#"
     >
