@@ -1,34 +1,14 @@
-import { e2eSupabase } from '../../helpers/supabase.ts'
-
-const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID
-
 const userCredentials = {
   email: import.meta.env.VITE_E2E_USER_EMAIL,
   password: import.meta.env.VITE_E2E_USER_PASSWORD
 }
 describe('Login', () => {
   before(() => {
-    cy.then(async () => {
-      const { error } = await e2eSupabase.auth.signUp({ email: userCredentials.email, password: userCredentials.password })
-
-      if(error === null || error.message === 'User already registered') {
-        return
-      }
-
-      throw new Error(error.message)
-    })
+    cy.createAccount(userCredentials.email, userCredentials.password)
   })
+
   after(() => {
-    cy.window().then(async win => {
-      const userStringfied = win.localStorage.getItem(`sb-${projectId}-auth-token`)
-      const { user = null } = JSON.parse(userStringfied ?? '{}')
-
-      if(!user) {
-        return
-      }
-
-      await e2eSupabase.auth.admin.deleteUser(user.id)
-    })
+    cy.deleteLoggedUser()
   })
 
   it('should login an existing user', () => {

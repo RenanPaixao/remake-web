@@ -10,6 +10,10 @@ describe('SignUp', () => {
     cy.visit('/sign-up')
   })
 
+  after(() => {
+    cy.deleteUserByEmail(userInformation.email)
+  })
+
   it('should create an user', () => {
     cy.findByRole('textbox', { name: /first name/i }).type(userInformation.firstName)
     cy.findByRole('textbox', { name: /last name/i }).type(userInformation.lastName)
