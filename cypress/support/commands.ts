@@ -1,8 +1,14 @@
 import '@testing-library/cypress/add-commands'
 import { e2eSupabase } from '../helpers/supabase.ts'
 import { User } from '@supabase/supabase-js'
+import { mailslurp } from '../helpers/mailslurp.ts'
 
 const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID
+
+Cypress.Commands.add('mailslurp', (): Cypress.Chainable<typeof mailslurp> => {
+  return mailslurp
+})
+
 Cypress.Commands.add('createAccount', (email: string, password: string) => {
   cy.then(async () => {
     const { error } = await e2eSupabase.auth.signUp({ email, password })
@@ -14,6 +20,7 @@ Cypress.Commands.add('createAccount', (email: string, password: string) => {
     throw new Error(error.message)
   })
 })
+
 Cypress.Commands.add('deleteLoggedUser', () => {
   cy.window().then(async win => {
     const userStringfied = win.localStorage.getItem(`sb-${projectId}-auth-token`)
