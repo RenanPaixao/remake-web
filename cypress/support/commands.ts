@@ -3,6 +3,7 @@ import { e2eSupabase } from '../helpers/supabase.ts'
 import { User } from '@supabase/supabase-js'
 import { mailslurp } from '../helpers/mailslurp.ts'
 import AUTWindow = Cypress.AUTWindow
+import { NewAccountData } from './types.js'
 
 const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID
 
@@ -10,9 +11,15 @@ Cypress.Commands.add('mailslurp', (): Cypress.Chainable<typeof mailslurp> => {
   return mailslurp
 })
 
-Cypress.Commands.add('createAccount', (email: string, password: string) => {
+Cypress.Commands.add('createAccount', (email: string, password: string, data?: Partial<NewAccountData>) => {
   cy.then(async () => {
-    const { error } = await e2eSupabase.auth.signUp({ email, password })
+    const { error } = await e2eSupabase.auth.signUp({ email, password,        options: {
+      data: {
+        first_name: data?.firstName ?? 'first-e2e',
+        last_name: data?.lastName ?? 'last-e2e',
+        is_recycler: data?.isRecycler ?? true
+      }
+    } })
 
     if(error === null || error.message === 'User already registered') {
       return
