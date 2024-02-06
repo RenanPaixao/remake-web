@@ -2,12 +2,12 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node", "vite/client", "@testing-library/cypress"],
+    "types": ["node", "vite/client", "cypress", "@testing-library/cypress"],
     "module": "es2020",
     "moduleResolution": "NodeNext",
     "composite": true,
     "allowImportingTsExtensions": true,
     "rootDir": "../"
   },
-  "include": ["**/*.ts", "../src/services/**/*.ts"],
+  "include": ["**/*.ts"],
 }

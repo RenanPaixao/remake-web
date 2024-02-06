@@ -12,7 +12,7 @@ module.exports = {
     ecmaFeatures: { jsx: true },
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: ['./tsconfig.json', './tsconfig.node.json', 'cypress/tsconfig.json'],
     parser: '@typescript-eslint/parser',
   },
   plugins: ['react-refresh'],
