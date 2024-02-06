@@ -6,7 +6,8 @@
     "module": "es2020",
     "moduleResolution": "NodeNext",
     "composite": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "rootDir": "../"
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../src/services/**/*.ts"],
 }
