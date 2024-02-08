@@ -42,7 +42,11 @@
     "email": "Invalid email address",
     "password": "Password must have at least 8 characters",
     "field-min-length": "the field must have at least 3 characters",
-    "field-max-length": "the field must have at most 50 characters"
+    "field-max-length": "the field must have at most 50 characters",
+    "cep": "CEP must be in the format 00000-000",
+    "hour": "The hour must be in the format 00:00",
+    "latitude": "Latitude must be less than or equal to 90 and greater than or equal to -90 and have decimal precision 1 digit at least (e.g. 12.3)",
+    "longitude": "Longitude must be less than or equal to 180 and greater than or equal to -180 and have decimal precision 1 digit at least (e.g. 12.3)"
   },
   "messages": {
     "you-have-login": "You have logged in successfully!"

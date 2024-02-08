@@ -18,13 +18,14 @@ import { useContext, useState } from 'react'
 import { CompanyService } from '../services/companyService.ts'
 import { UserContext } from '../context/UserContext.tsx'
 import { useSuccessToast } from '../hooks/toast/useSuccessToast.tsx'
+import { useTranslation } from 'react-i18next'
 
 const validationSchema = Yup.object({
-  company_name: Yup.string().required('Company name is required'),
-  cep: Yup.string().required('CEP is required').matches(/^\d{5}-\d{3}$/, 'CEP must be in the format 00000-000'),
-  street: Yup.string().required('Street is required'),
-  state: Yup.string().required('State is required'),
-  number: Yup.string().required('Number is required'),
+  company_name: Yup.string().required('validations.required'),
+  cep: Yup.string().required('validations.required').matches(/^\d{5}-\d{3}$/, 'validations.cep'),
+  street: Yup.string().required('validations.required'),
+  state: Yup.string().required('validations.required'),
+  number: Yup.string().required('validations.required'),
   complement: Yup.string(),
   city: Yup.string().required('City is required'),
   district: Yup.string().required('District is required'),
@@ -32,6 +33,10 @@ const validationSchema = Yup.object({
   closing_hour: Yup.string().required('Closing hour is required').matches(/^\d{2}:\d{2}$/, 'The format should be 00:00'),
   latitude: Yup.string().required('Latitude is required').matches(/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})$/, 'Incorrect format for latitude'),
   longitude: Yup.string().required('Longitude is required').matches(/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/, 'Incorrect format for longitude')
+  city: Yup.string().required('validations.required'),
+  district: Yup.string().required('validations.required'),
+  openning_hour: Yup.string().required('validations.required').matches(/^\d{2}:\d{2}$/, 'validations.hour'),
+  closing_hour: Yup.string().required('validations.required').matches(/^\d{2}:\d{2}$/, 'validations.hour'),
 })
 
 type FormValues = Yup.InferType<typeof validationSchema>
@@ -51,7 +56,23 @@ const initialValues: FormValues = {
   longitude: ''
 }
 
+/**
+ * Returns the key to translate labels according to json file.
+ * @param key
+ */
+const getKeyToTranslate = (key: keyof FormValues) => {
+  const differentKeys: Record<string, string> = {
+    company_name: 'labels.company-name',
+    openning_hour: 'labels.opening-hours',
+    closing_hour: 'labels.closing-hours',
+    cep: 'labels.post-code'
+  }
+
+  return differentKeys[key] ?? `labels.${key}`
+}
+
 export const AddPlace = () => {
+  const { t } = useTranslation()
   const { userInformation } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -85,7 +106,7 @@ export const AddPlace = () => {
           longitude: parseFloat(values.longitude)
         })
 
-        successToast({ description: 'Place added successfully' })
+        successToast({ description: t('add-place.place-added') })
         navigate('/account')
       }catch(e) {
         console.error(e)
@@ -101,7 +122,7 @@ export const AddPlace = () => {
   const requiredFields = fieldNames.filter(key => key !== 'complement')
 
   return <Center pt={4} flexDirection={'column'}>
-    <Heading py={16}>Add Collect Place</Heading>
+    <Heading py={16}>{t('add-place.add-collect-place')}</Heading>
     <form onSubmit={formik.handleSubmit}>
       <SimpleGrid columns={2} spacing={4}>
         {
@@ -113,7 +134,7 @@ export const AddPlace = () => {
               isInvalid={hasFormikError(key, formik.touched, formik.errors)}
               isRequired={requiredFields.some(required => key === required)}
             >
-              <FormLabel htmlFor={key}>{title(key)}</FormLabel>
+              <FormLabel htmlFor={key}>{t(getKeyToTranslate(key))}</FormLabel>
               <Input
                 isDisabled={isLoading}
                 name={key}
@@ -122,13 +143,13 @@ export const AddPlace = () => {
                 value={formik.values[key]}
                 onBlur={formik.handleBlur}
               />
-              <FormErrorMessage>{formik.errors[key]}</FormErrorMessage>
+              <FormErrorMessage>{t(formik.errors[key] ?? '')}</FormErrorMessage>
             </FormControl>
           })
         }
       </SimpleGrid>
       <FormControl>
-        <FormHelperText>You can get the latitude and longitude searching for the place address in google maps</FormHelperText>
+        <FormHelperText>{t('add-place.you-can-search')}</FormHelperText>
       </FormControl>
       <SimpleGrid columns={2} py={14} gap={4}>
         <Flex justifyContent={'end'}>
@@ -139,7 +160,7 @@ export const AddPlace = () => {
             colorScheme={'blue'}
             onClick={() => navigate('/account')}
             leftIcon={<FaArrowLeft/>}>
-            Account
+            {t('actions.account')}
           </Button>
         </Flex>
         <Flex justifyContent={'start'}>
@@ -149,7 +170,7 @@ export const AddPlace = () => {
             rightIcon={<FaPlus/>}
             onClick={() => formik.handleSubmit()}
           >
-            Add Place
+            {t('actions.add-place')}
           </Button>
         </Flex>
       </SimpleGrid>
