@@ -99,7 +99,7 @@
     "you-have-no-places": "You have no places added yet."
   },
   "add-place": {
-    "add-collect-place": "Adicionar Ponto de Coleta",
-    "you-can-search": "Você pode obter a latitude e longitude do seu local buscando o endereço através do Google Maps."
+    "add-collect-place": "Add Collect Point",
+    "you-can-search": "You can get the latitude and longitude searching for the place address in google maps."
   }
 }

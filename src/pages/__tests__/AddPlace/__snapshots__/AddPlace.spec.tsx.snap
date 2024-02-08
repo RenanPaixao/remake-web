@@ -8,7 +8,7 @@ exports[`AddPlace > should render 1`] = `
     <h2
       class="chakra-heading css-1wh6evl"
     >
-      Add Collect Place
+      Add Collect Point
     </h2>
     <form>
       <div
@@ -51,7 +51,7 @@ exports[`AddPlace > should render 1`] = `
             for="cep"
             id="field-:r1:-label"
           >
-            Cep
+            Post Code
             <span
               aria-hidden="true"
               class="chakra-form__required-indicator css-1tfjd1n"
@@ -238,7 +238,7 @@ exports[`AddPlace > should render 1`] = `
             for="openning_hour"
             id="field-:r8:-label"
           >
-            Openning Hour
+            Opening Hours
             <span
               aria-hidden="true"
               class="chakra-form__required-indicator css-1tfjd1n"
@@ -266,7 +266,7 @@ exports[`AddPlace > should render 1`] = `
             for="closing_hour"
             id="field-:r9:-label"
           >
-            Closing Hour
+            Closing Hours
             <span
               aria-hidden="true"
               class="chakra-form__required-indicator css-1tfjd1n"
@@ -350,7 +350,7 @@ exports[`AddPlace > should render 1`] = `
           class="chakra-form__helper-text css-186pyma"
           id="field-:rc:-helptext"
         >
-          You can get the latitude and longitude searching for the place address in google maps
+          You can get the latitude and longitude searching for the place address in google maps.
         </div>
       </div>
       <div
@@ -393,7 +393,7 @@ exports[`AddPlace > should render 1`] = `
             disabled=""
             type="button"
           >
-            Add Place
+            Adicionar Ponto de Coleta
             <span
               class="chakra-button__icon css-1hzyiq5"
             >

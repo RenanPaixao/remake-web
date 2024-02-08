@@ -57,7 +57,7 @@ exports[`FAQPage > should render 1`] = `
             id="accordion-panel-:r0:"
             role="region"
           >
-            Place separate bins for different types of waste in a convenient location in your home and Make sure everyone in your household understands the importance of recycling. 
+            Place separate bins for different types of waste in a convenient location in your home and Make sure everyone in your household understands the importance of recycling.
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ exports[`FAQPage > should render 1`] = `
             id="accordion-panel-:r4:"
             role="region"
           >
-            You can add as many places as you want.
+            You can add as many places as you want. We encourage you to add as many places as you can!
           </div>
         </div>
       </div>

@@ -90,7 +90,8 @@ exports[`Login > should render 1`] = `
           role="link"
         >
           <strong>
-             Register here!
+             
+            Register here!
           </strong>
         </a>
       </p>
@@ -102,7 +103,7 @@ exports[`Login > should render 1`] = `
           role="link"
         >
           <strong>
-            Forgot password?
+            Forgot your password?
           </strong>
         </a>
       </p>

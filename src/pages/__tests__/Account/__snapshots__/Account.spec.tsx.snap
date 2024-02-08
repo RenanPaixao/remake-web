@@ -39,7 +39,7 @@ exports[`Account > should render 1`] = `
         <h2
           class="chakra-heading css-nvrxd0"
         >
-          Your places
+          Your Places
         </h2>
         <div
           class="css-1jrpzwu"
@@ -166,7 +166,7 @@ exports[`Account > should render when have no companies 1`] = `
         <h2
           class="chakra-heading css-nvrxd0"
         >
-          Your places
+          Your Places
         </h2>
         <div
           class="css-1jrpzwu"
@@ -177,7 +177,7 @@ exports[`Account > should render when have no companies 1`] = `
             <p
               class="chakra-text css-0"
             >
-              You don't have any places yet.
+              You have no places added yet.
             </p>
           </div>
         </div>
