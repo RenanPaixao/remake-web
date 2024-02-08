@@ -24,7 +24,8 @@
   "include": ["./"],
   "exclude": [
     "node_modules",
-    "cypress"
+    "cypress",
+    "cypress.config.ts" // Needed to avoid type errors while building.
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
