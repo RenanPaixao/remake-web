@@ -40,7 +40,9 @@
   "validations": {
     "required": "This field is required",
     "email": "Invalid email address",
-    "password": "Password must have at least 8 characters"
+    "password": "Password must have at least 8 characters",
+    "field-min-length": "the field must have at least 3 characters",
+    "field-max-length": "the field must have at most 50 characters"
   },
   "messages": {
     "you-have-login": "You have logged in successfully!"

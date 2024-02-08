@@ -6,18 +6,20 @@ import * as Yup from 'yup'
 import { supabase } from '../../utils/supabase.ts'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 import { hasFormikError } from '../../utils/hasFormikError.ts'
+import { useTranslation } from 'react-i18next'
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().required('Required').max(50, 'Name must be at most 50 characters'),
-  lastName: Yup.string().required('Required').max(50, 'Last name must be at most 50 characters'),
-  email: Yup.string().email('Invalid email address').required('Required').max(50, 'Email must be at most 50 characters'),
-  password: Yup.string().required('Required').min(8, 'Password must be at least 8 characters'),
+  firstName: Yup.string().required('validations.required').max(50, 'validations.field-max-length').min(3, 'validations.field-min-length'),
+  lastName: Yup.string().required('validations.required').max(50, 'validations.field-max-length').min(3, 'validations.field-min-length'),
+  email: Yup.string().email('validations.email').required('validations.required').max(50, 'validations.field-max-length'),
+  password: Yup.string().required('validations.required').min(8, 'validations.password'),
   isRecycler: Yup.boolean()
 })
 
 type FormValues = Yup.InferType<typeof validationSchema>
 
 export const SignUpForm = () => {
+  const { t } = useTranslation()
   const errorToast = useErrorToast()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -66,7 +68,7 @@ export const SignUpForm = () => {
 
   return <form onSubmit={formik.handleSubmit}>
     <FormControl mt={4} isInvalid={hasFormikError('firstName', formik.touched, formik.errors)} isRequired>
-      <FormLabel htmlFor='firstName'>First Name</FormLabel>
+      <FormLabel htmlFor='firstName'>{t('labels.first-name')}</FormLabel>
       <Input
         name='firstName'
         aria-label='First Name'
@@ -74,11 +76,11 @@ export const SignUpForm = () => {
         value={formik.values.firstName}
         onBlur={formik.handleBlur}
       />
-      <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
+      <FormErrorMessage>{formik.errors.firstName ? t(formik.errors.firstName) : null}</FormErrorMessage>
     </FormControl>
 
     <FormControl mt={4} isInvalid={hasFormikError('lastName', formik.touched, formik.errors)} isRequired>
-      <FormLabel htmlFor='lastName'>Last Name</FormLabel>
+      <FormLabel htmlFor='lastName'>{t('labels.last-name')}</FormLabel>
       <Input
         name='lastName'
         aria-label={'Last Name'}
@@ -86,11 +88,11 @@ export const SignUpForm = () => {
         value={formik.values.lastName}
         onBlur={formik.handleBlur}
       />
-      <FormErrorMessage>{formik.errors.lastName}</FormErrorMessage>
+      <FormErrorMessage>{formik.errors.lastName ? t(formik.errors.lastName) : null}</FormErrorMessage>
     </FormControl>
 
     <FormControl mt={4} isInvalid={hasFormikError('email', formik.touched, formik.errors)} isRequired>
-      <FormLabel htmlFor='email'>Email</FormLabel>
+      <FormLabel htmlFor='email'>{t('labels.email')}</FormLabel>
       <Input
         name='email'
         aria-label={'email'}
@@ -99,11 +101,11 @@ export const SignUpForm = () => {
         onBlur={formik.handleBlur}
         type={'email'}
       />
-      <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+      <FormErrorMessage>{formik.errors.email ? t(formik.errors.email) : null}</FormErrorMessage>
     </FormControl>
 
     <FormControl mt={4} isInvalid={hasFormikError('password', formik.touched, formik.errors)} isRequired>
-      <FormLabel htmlFor='password'>Password</FormLabel>
+      <FormLabel htmlFor='password'>{t('labels.password')}</FormLabel>
       <Input
         data-testid={'password-input'}
         name='password'
@@ -113,7 +115,7 @@ export const SignUpForm = () => {
         value={formik.values.password}
         onBlur={formik.handleBlur}
       />
-      <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+      <FormErrorMessage>{formik.errors.password ? t(formik.errors.password) : null}</FormErrorMessage>
     </FormControl>
 
     <FormControl display={'flex'} mt={4} >
@@ -122,19 +124,19 @@ export const SignUpForm = () => {
         onChange={formik.handleChange}
         isChecked={formik.values.isRecycler}
       >
-        Are you a recycler?
+        {t('labels.is-recycler')}
       </Checkbox>
     </FormControl>
 
     <ButtonGroup mt={8} spacing={10} isDisabled={isLoading}>
-      <Button variant={'outline'} isLoading={isLoading} onClick={goToLogin}>Login</Button>
+      <Button variant={'outline'} isLoading={isLoading} onClick={goToLogin}>{t('labels.login')}</Button>
       <Button
         colorScheme={'blue'}
         isLoading={isLoading}
         type={'submit'}
         isDisabled={formik.isSubmitting || Object.keys(formik.errors).length > 0}
       >
-        Create Account
+        {t('actions.create-account')}
       </Button>
     </ButtonGroup>
   </form>

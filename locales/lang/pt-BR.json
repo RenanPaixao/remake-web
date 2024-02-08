@@ -39,8 +39,10 @@
   },
   "validations": {
     "required": "Campo obrigatório",
-    "email": "Email inválido",
-    "password": "A senha deve ter no mínimo 6 caracteres"
+    "email": "Formato de email inválido",
+    "password": "A senha deve ter no mínimo 8 caracteres",
+    "field-min-length": "O campo deve ter no mínimo 3 caracteres",
+    "field-max-length": "O campo deve ter no máximo 50 caracteres"
   },
   "messages": {
     "you-have-login": "Você logou com sucesso!"
