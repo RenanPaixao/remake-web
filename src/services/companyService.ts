@@ -13,8 +13,6 @@ export interface CompanyWithLocations extends Company {
 }
 
 class PlacesServiceImp {
-  // Disabling the rule to keep the inference of the return type of this method.
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   get queryBuilder() {
     return supabase.from('companies')
   }

@@ -60,17 +60,8 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': ['off', { prefer: 'type-imports' }],
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
     '@typescript-eslint/strict-boolean-expressions': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
-  },
-  
-  overrides: [
-    {
-      files: ['*.tsx'],
-      rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
-      }
-    }
-  ],
+  }
 }
