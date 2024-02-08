@@ -91,7 +91,8 @@
     }
   },
   "account": {
-    "your-places": "Seus pontos de coleta"
+    "your-places": "Seus pontos de coleta",
+    "you-have-no-places": "Você ainda não adicionou nenhum ponto de coleta."
   },
   "add-place": {
     "add-collect-place": "Adicionar Ponto de Coleta",

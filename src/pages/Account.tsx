@@ -16,8 +16,10 @@ import { CompanyService, CompanyWithLocations } from '../services/companyService
 import { PlaceCard } from '../components/PlaceCard/PlaceCard.tsx'
 import { showLocationOnMaps } from '../utils/location.ts'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export const Account = () => {
+  const { t } = useTranslation()
   const { userInformation } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
@@ -44,7 +46,7 @@ export const Account = () => {
     if(companies.length === 0) {
       return <Center>
         <Text>
-          You don't have any places yet.
+          {t('account.you-have-no-places')}
         </Text>
       </Center>
     }
@@ -88,7 +90,7 @@ export const Account = () => {
         </Text>
 
         <Heading as="h2" size="md" mt={20} mb={10}>
-            Your places
+          {t('account.your-places')}
         </Heading>
 
         {isLoading ? <Center>
@@ -113,8 +115,8 @@ export const Account = () => {
       </CardBody>
       <CardFooter justifyContent={'center'}>
         {isRecycler  ?
-          <Button colorScheme={'blue'} onClick={goToAddPlace}>Add New Place</Button> :
-          <Button colorScheme={'blue'}>Become a recycler</Button>
+          <Button colorScheme={'blue'} onClick={goToAddPlace}>{t('actions.add-new-place')}</Button> :
+          <Button colorScheme={'blue'}>{t('actions.become-a-recycler')}</Button>
         }
       </CardFooter>
     </Card>
