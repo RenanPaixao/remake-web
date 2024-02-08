@@ -1,8 +1,10 @@
 import { Center, Flex, Heading, Text } from '@chakra-ui/react'
 import { CategoryList } from '../components/CategoryList/CategoryList.tsx'
 import { TheLink } from '../components/TheLink/TheLink.tsx'
+import { useTranslation } from 'react-i18next'
 
 export const Home = () => {
+  const { t } = useTranslation()
   return (
     <Center mt={20}>
       <Flex
@@ -15,17 +17,17 @@ export const Home = () => {
         gap='2rem'
       >
         <Heading w='100%' size='md' colorScheme='red' textAlign='center'>
-          Choose the category you want to discard:
+          {t('home.choose-category')}
         </Heading>
         <Text textDecoration={'underline'} opacity='60%' role={'link'}>
           <TheLink to={'/collect-places'}>
-            See places closest to your location!
+            {t('home.see-closest-places')}
           </TheLink>
         </Text>
         <CategoryList />
         <Text textDecoration={'underline'} opacity='60%' role={'link'}>
           <TheLink to={'/faq'}>
-            If you have any questions, visit our FAQ!
+            {t('home.if-you-have-questions')}
           </TheLink>
         </Text>
       </Flex>

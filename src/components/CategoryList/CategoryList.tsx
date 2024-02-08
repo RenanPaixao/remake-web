@@ -5,45 +5,48 @@ import { RiCopperCoinLine } from 'react-icons/ri'
 import { LiaDrumSteelpanSolid, LiaWineGlassSolid } from 'react-icons/lia'
 import { FaBoxOpen, FaRegNewspaper } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export const CategoryList = () => {
+  const { t } = useTranslation()
+
   const iconSize = '2rem'
   const categories = [
     {
       icon: <FaComputer size={iconSize}/>,
-      title: 'Electronics'
+      title: t('home.electronics')
     },
     {
       icon: <FaSheetPlastic size={iconSize}/>,
-      title: 'Plastic'
+      title: t('home.plastic')
     },
     {
       icon: <GiSteelClaws size={iconSize}/>,
-      title: 'Steel'
+      title: t('home.steel')
     },
     {
       icon: <RiCopperCoinLine size={iconSize}/>,
-      title: 'Copper'
+      title: t('home.copper')
     },
     {
       icon: <LiaDrumSteelpanSolid size={iconSize}/>,
-      title: 'Aluminum'
+      title: t('home.aluminum')
     },
     {
       icon: <FaBucket size={iconSize}/>,
-      title: 'Buckets'
+      title: t('home.buckets')
     },
     {
       icon: <LiaWineGlassSolid size={iconSize}/>,
-      title: 'Glass'
+      title: t('home.glass')
     },
     {
       icon: <FaRegNewspaper size={iconSize}/>,
-      title: 'Paper'
+      title: t('home.paper')
     },
     {
       icon: <FaBoxOpen size={iconSize}/>,
-      title: 'Boxes'
+      title: t('home.boxes')
     }
   ]
 

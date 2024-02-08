@@ -7,8 +7,10 @@ import { supabase } from '../../utils/supabase.ts'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
+import { useTranslation } from 'react-i18next'
 
 export const Navbar = (props: FlexProps) => {
+  const { t } = useTranslation()
   const errorToast = useErrorToast()
   const navigate = useNavigate()
 
@@ -37,6 +39,6 @@ export const Navbar = (props: FlexProps) => {
       <NavbarLogo h={'50px'} src={logo} />
     </TheLink>
     <LinkList />
-    <Button colorScheme='red' variant='outline' w={'80px'} isLoading={isLoading} onClick={logout}>Logout</Button>
+    <Button colorScheme='red' variant='outline' w={'80px'} isLoading={isLoading} onClick={logout}>{t('actions.logout')}</Button>
   </Flex>
 }
