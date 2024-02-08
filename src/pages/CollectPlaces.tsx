@@ -6,8 +6,10 @@ import haversine from 'haversine'
 import { Pagination } from '../components/Pagination/Pagination.tsx'
 import { SearchBar } from '../components/SearchBar/SearchBar.tsx'
 import { saveLocationOnSessionStorage, showLocationOnMaps } from '../utils/location.ts'
+import { useTranslation } from 'react-i18next'
 
 export const CollectPlaces = () => {
+  const { t } = useTranslation()
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
   const [currentPosition, setPosition] = useState({ latitude: 0, longitude: 0 })
   const [totalPages, setTotalPages] = useState(0)
@@ -120,7 +122,7 @@ export const CollectPlaces = () => {
     <Center w={'100%'} py={4}>
       <SearchBar
         onSearch={onSearch}
-        placeholder={'Search for a place'}
+        placeholder={t('collect-places.search-for-a-place')}
         isDisabled={isLoading}
         containerProps={{ display: 'flex', justifyContent: 'center', flexBasis:'40rem' }}
       />

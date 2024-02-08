@@ -10,12 +10,15 @@ import {
 import { FaSearch } from 'react-icons/fa'
 import React, { ChangeEvent, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 interface IProps extends InputProps{
   containerProps?: InputGroupProps,
   onSearch: (value: string) => void
 }
 export const SearchBar = (props: IProps) => {
+  const { t } = useTranslation()
+
   const { containerProps, onSearch, ...rest } = props
   const [value, setValue] = useState<string>('')
   const [searchParams, setSearchParams] = useSearchParams({ search: '' })
@@ -78,7 +81,7 @@ export const SearchBar = (props: IProps) => {
       borderRadius={'md'}
     />
     <InputRightAddon bg={'transparent'} padding={2} border={'none'}>
-      <Button onClick={() => search(value)} colorScheme={'blue'}>Search</Button>
+      <Button onClick={() => search(value)} colorScheme={'blue'}>{t('actions.search')}</Button>
     </InputRightAddon>
   </InputGroup>
 }
