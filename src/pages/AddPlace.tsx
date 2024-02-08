@@ -27,16 +27,12 @@ const validationSchema = Yup.object({
   state: Yup.string().required('validations.required'),
   number: Yup.string().required('validations.required'),
   complement: Yup.string(),
-  city: Yup.string().required('City is required'),
-  district: Yup.string().required('District is required'),
-  openning_hour: Yup.string().required('Openning hour is required').matches(/^\d{2}:\d{2}$/, 'The format should be 00:00'),
-  closing_hour: Yup.string().required('Closing hour is required').matches(/^\d{2}:\d{2}$/, 'The format should be 00:00'),
-  latitude: Yup.string().required('Latitude is required').matches(/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})$/, 'Incorrect format for latitude'),
-  longitude: Yup.string().required('Longitude is required').matches(/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/, 'Incorrect format for longitude')
   city: Yup.string().required('validations.required'),
   district: Yup.string().required('validations.required'),
   openning_hour: Yup.string().required('validations.required').matches(/^\d{2}:\d{2}$/, 'validations.hour'),
   closing_hour: Yup.string().required('validations.required').matches(/^\d{2}:\d{2}$/, 'validations.hour'),
+  latitude: Yup.string().required('validations.required').matches(/^-?([0-8]?[0-9]\.[0-9]{1,10})|90$/, 'validations.latitude'),
+  longitude: Yup.string().required('validations.required').matches(/^-?([0-9]{1,2}|1[0-7][0-9])(\.[0-9]{1,10})|(180)$/, 'validations.longitude')
 })
 
 type FormValues = Yup.InferType<typeof validationSchema>
