@@ -33,9 +33,9 @@
     "logout": "Logout",
     "search": "Search",
     "go": "Go!",
-    "add-new-place": "Add New Place",
+    "add-new-place": "Add New collect point",
     "become-a-recycler": "Become a recycler",
-    "add-place": "Adicionar Ponto de Coleta"
+    "add-place": "Add Collect Point"
   },
   "validations": {
     "required": "This field is required",

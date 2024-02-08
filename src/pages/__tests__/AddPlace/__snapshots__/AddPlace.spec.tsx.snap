@@ -393,7 +393,7 @@ exports[`AddPlace > should render 1`] = `
             disabled=""
             type="button"
           >
-            Adicionar Ponto de Coleta
+            Add Collect Point
             <span
               class="chakra-button__icon css-1hzyiq5"
             >

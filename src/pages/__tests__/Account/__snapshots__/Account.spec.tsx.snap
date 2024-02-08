@@ -115,7 +115,7 @@ exports[`Account > should render 1`] = `
           class="chakra-button css-jut409"
           type="button"
         >
-          Add New Place
+          Add New collect point
         </button>
       </div>
     </div>
@@ -189,7 +189,7 @@ exports[`Account > should render when have no companies 1`] = `
           class="chakra-button css-jut409"
           type="button"
         >
-          Add New Place
+          Add New collect point
         </button>
       </div>
     </div>

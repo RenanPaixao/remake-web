@@ -47,7 +47,7 @@ describe('Login', () => {
     const { getByRole } = customRender(<Login/>)
 
     const signUpLink = getByRole('link', { name: /register here!/i })
-    const forgotPasswordLink = getByRole('link', { name: /forgot password?/i })
+    const forgotPasswordLink = getByRole('link', { name: /forgot your password?/i })
 
     expect(signUpLink).toHaveAttribute('href', '/sign-up')
     expect(forgotPasswordLink).toHaveAttribute('href', '/forgot-password')

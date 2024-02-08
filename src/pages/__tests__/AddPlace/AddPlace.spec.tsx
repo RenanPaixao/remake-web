@@ -35,7 +35,7 @@ describe('AddPlace', () => {
 
   it('should be possible to fill all inputs', async () => {
     const { getByRole } = renderWithUserContext(<AddPlace/>)
-    const addPlaceButton = getByRole('button', { name: /Add place/i })
+    const addPlaceButton = getByRole('button', { name: /Add collect point/i })
 
     await fillForm()
 
@@ -74,7 +74,7 @@ describe('AddPlace', () => {
         isRecycler: false
       }
     })
-    const addPlaceButton = getByRole('button', { name: /Add place/i })
+    const addPlaceButton = getByRole('button', { name: /Add collect point/i })
 
     await fillForm()
 

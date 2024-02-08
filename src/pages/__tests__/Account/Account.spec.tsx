@@ -62,7 +62,7 @@ describe('Account', () => {
 
     const { getByRole } = renderWithUserContext(<Account/>)
 
-    const addPlaceButton = getByRole('button', { name: /add new place/i })
+    const addPlaceButton = getByRole('button', { name: /add new collect point/i })
     await user.click(addPlaceButton)
 
     await waitFor(() => {

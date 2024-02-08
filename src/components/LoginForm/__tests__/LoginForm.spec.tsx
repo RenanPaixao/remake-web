@@ -125,7 +125,7 @@ describe('LoginForm', () => {
     await waitFor(() => {
       expect(toastMock).toHaveBeenCalledWith({
         title: 'Success',
-        description: 'You have successfully logged in.',
+        description: 'You have logged in successfully!',
         status: 'success',
         duration: 4000,
         isClosable: true
