@@ -1,0 +1,98 @@
+{
+  "labels": {
+    "password": "Senha",
+    "login": "Entrar",
+    "first-name": "Nome",
+    "last-name": "Sobrenome",
+    "is-recycler": "Você é um reciclador?",
+    "email": "Email",
+    "post-code": "CEP",
+    "company-name": "Nome da empresa",
+    "street": "Rua",
+    "city": "Cidade",
+    "state": "Estado",
+    "number": "Número",
+    "complement": "Complemento",
+    "district": "Bairro",
+    "opening-hours": "Horário de Abertura",
+    "closing-hours": "Horário de Fechamento",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "error": "Erro",
+    "success": "Sucesso",
+    "warning": "Aviso"
+  },
+  "actions": {
+    "login": "Entrar",
+    "create-account": "Create Conta",
+    "send-recovery-email": "Enviar Email de Recuperação",
+    "home": "Início",
+    "collect-places": "Pontos de Coleta",
+    "faq": "FAQ",
+    "account": "Conta",
+    "logout": "Sair",
+    "search": "Procurar",
+    "go": "Ir!",
+    "add-new-place": "Adicionar Novo Ponto de Coleta",
+    "become-a-recycler": "Se tornar reciclador",
+    "add-place": "Adicionar Ponto de Coleta"
+  },
+  "validations": {
+    "required": "Campo obrigatório",
+    "email": "Email inválido",
+    "password": "A senha deve ter no mínimo 6 caracteres"
+  },
+  "messages": {
+    "you-have-login": "Você logou com sucesso!"
+  },
+  "login": {
+    "dont-have-an-account": "Ainda não tem conta?",
+    "register-here": "Registre-se aqui!",
+    "forgot-password": "Esqueceu sua senha?"
+  },
+  "forgot-password": {
+    "enter-your-email": "Digite seu email e enviaremos um link de recuperação.",
+    "confirmation-modal": {
+      "title": "Email de recuperação enviado!",
+      "message": "Enviamos um email com um link de recuperação para você. Verifique sua caixa de entrada!"
+    }
+  },
+  "home": {
+    "choose-category": "Escolha a categoria que você gostaria de descartar:",
+    "see-closest-places": "Veja os pontos mais próximos da sua localização!",
+    "if-you-have-questions": "Se você tem alguma dúvida, visite nosso FAQ!",
+    "electronics": "Eletrônicos",
+    "plastic": "Plástico",
+    "steel": "Metal",
+    "copper": "Cobre",
+    "aluminum": "Alumínio",
+    "buckets": "Baldes",
+    "glass": "Vidro",
+    "paper": "Papel",
+    "boxes": "Caixas"
+  },
+  "collect-places": {
+    "search-for-a-place": "Procure por um ponto de coleta"
+  },
+  "faq": {
+    "questions": {
+      "how-to-separate": "Como separar lixo para reciclagem?",
+      "i-have-became-a-collector": "Me tornei um reciclador. Como adicionar um ponto de coleta?",
+      "how-many-places": "Quantos pontos de coleta posso adicionar?",
+      "where-is-the-comment-section": "Onde está a seção de comentários sobre locais que está presente no aplicativo mobile?"
+    },
+    "answers": {
+      "how-to-separate": "Coloque lixeiras separadas para diferentes tipos de lixo em um local conveniente em sua casa e certifique-se de que todos em sua casa entendam a importância da reciclagem.",
+      "i-have-became-a-collector": "Vá para a página \"conta\" e clique no botão \"Tornar-se um reciclador\". Apoś, você poderá adicionar um lugar.",
+      "how-many-places": "Você pode adicionar quantos lugares quiser. Nós encorajamos você a adicionar tantos lugares quanto possível!",
+      "where-is-the-comment-section": "A seção de comentários está disponível apenas no aplicativo móvel. Nós estamos trabalhando para trazê-la para a versão web também!"
+    }
+  },
+  "account": {
+    "your-places": "Seus pontos de coleta"
+  },
+  "add-place": {
+    "add-collect-place": "Adicionar Ponto de Coleta",
+    "you-can-search": "Você pode obter a latitude e longitude do seu local buscando o endereço através do Google Maps."
+  }
+}

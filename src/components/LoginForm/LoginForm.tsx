@@ -6,15 +6,17 @@ import * as Yup from 'yup'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 import { useSuccessToast } from '../../hooks/toast/useSuccessToast.tsx'
 import { hasFormikError } from '../../utils/hasFormikError.ts'
+import { useTranslation } from 'react-i18next'
 
 const validationSchema = Yup.object({
-  email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string().required('Required').min(8, 'Password must be at least 8 characters')
+  email: Yup.string().email('validations.email').required('validations.required'),
+  password: Yup.string().required('validations.required').min(8, 'validations.password')
 })
 
 type FormValues = Yup.InferType<typeof validationSchema>
 
 export const LoginForm = () => {
+  const { t } = useTranslation()
   const errorToast = useErrorToast()
   const successToast = useSuccessToast()
   const navigate = useNavigate()
@@ -35,7 +37,7 @@ export const LoginForm = () => {
       return
     }
 
-    successToast({ description: 'You have successfully logged in.' })
+    successToast({ description: t('messages.you-have-login') })
 
     navigate('/')
   }
@@ -52,9 +54,9 @@ export const LoginForm = () => {
         <Field name="email">
           {({ field }: FieldProps) => (
             <FormControl isInvalid={hasFormikError('email', touched, errors)} isRequired>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('labels.email')}</FormLabel>
               <Input {...field} id="email" placeholder="Email" />
-              <FormErrorMessage>{errors.email}</FormErrorMessage>
+              <FormErrorMessage>{errors.email ? t(errors.email) : null}</FormErrorMessage>
             </FormControl>
           )}
         </Field>
@@ -62,9 +64,9 @@ export const LoginForm = () => {
         <Field name="password">
           {({ field }: FieldProps) => (
             <FormControl mt={4} isInvalid={hasFormikError('password', touched, errors)} isRequired>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <Input type='password' {...field} id="password" placeholder="Password"/>
-              <FormErrorMessage>{errors.password}</FormErrorMessage>
+              <FormLabel htmlFor="password">{t('labels.password')}</FormLabel>
+              <Input type='password' {...field} id="password" placeholder={t('labels.password')}/>
+              <FormErrorMessage>{errors.password ? t(errors.password) : null}</FormErrorMessage>
             </FormControl>
           )}
         </Field >
@@ -78,7 +80,7 @@ export const LoginForm = () => {
           isDisabled={isSubmitting || Object.keys(errors).length > 0 }
           type="submit"
         >
-          Login
+          {t('actions.login')}
         </Button>
       </Form>
     )}
