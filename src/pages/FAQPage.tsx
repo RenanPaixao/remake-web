@@ -1,23 +1,25 @@
 import { Center, Heading } from '@chakra-ui/react'
 import { QuestionsList } from '../components/QuestionsList/QuestionsList.tsx'
+import { useTranslation } from 'react-i18next'
 
 export const FAQPage = () => {
+  const { t } = useTranslation()
   const contentList = [
     {
-      title: 'How to separate waste for recycling?',
-      content: 'Place separate bins for different types of waste in a convenient location in your home and Make sure everyone in your household understands the importance of recycling. '
+      title: t('faq.questions.how-to-separate'),
+      content: t('faq.answers.how-to-separate')
     },
     {
-      title: 'I\'ve became a collector. How to add a place?',
-      content: 'Go to account page and click on "Become a collector" button. Then you will be able to add a place.'
+      title: t('faq.questions.i-have-became-a-collector'),
+      content: t('faq.answers.i-have-became-a-collector')
     },
     {
-      title: 'How many places can I add?',
-      content: 'You can add as many places as you want.'
+      title: t('faq.questions.how-many-places'),
+      content: t('faq.answers.how-many-places')
     },
     {
-      title: 'Where is the comments section about places present in the mobile application?',
-      content: 'The comments about places is not present in the desktop application.'
+      title: t('faq.questions.where-is-the-comment-section'),
+      content: t('faq.answers.where-is-the-comment-section')
     }
   ]
   return <Center gap={8} pt={10} flexDirection={'column'}>
