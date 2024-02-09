@@ -22,7 +22,7 @@ describe('SignUp', () => {
     cy.findByRole('button', { name: /send recovery email/i }).click()
     cy.findByRole('dialog', { name: /recovery email sent/i }).should('be.visible')
 
-    cy.mailslurp().then(async mailslurp => {
+    cy.mailslurp().then({ timeout: 10000 }, async mailslurp => {
       const email = await mailslurp.waitForLatestEmail(inboxId)
       const regex = /<a href="https:\/\/.*\.supabase\.co\/auth\/v1\/verify\?token=.*&amp;type=recovery&amp;redirect_to=http:\/\/.*\/">Reset Password<\/a>/gm
       expect(email.body).to.include('Reset Password')

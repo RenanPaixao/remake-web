@@ -22,7 +22,9 @@ export interface LocationWithoutCoordinates {
 
 export type Location = LocationWithoutCoordinates & LocationCoordinates
 export class LocationsServiceImp {
-  queryBuilder = supabase.from('locations')
+  get queryBuilder() {
+    return supabase.from('locations')
+  }
 
   async create(location: Location): Promise<Location> {
     const { data, error } = await this.queryBuilder.insert(location).select().single()

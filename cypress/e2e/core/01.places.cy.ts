@@ -21,7 +21,7 @@ const location = {
   longitude: 11.1
 }
 
-const companyName = 'e2e-test'
+const companyName = `e2e-test-${Date.now()}`
 
 describe('Places', () => {
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe('Places', () => {
   })
 
   after(() => {
-    cy.deleteLoggedUser()
+    cy.deleteUserByEmail(userCredentials.email)
   })
 
   it('should search for an place successfully', () => {
@@ -50,7 +50,7 @@ describe('Places', () => {
     })
 
     cy.findByRole('button', { name: /collect places/i }).click()
-    cy.findByRole('searchbox', { name: /search bar/i }).should('not.be.disabled').type('e2e-test')
+    cy.findByRole('searchbox', { name: /search bar/i }).should('not.be.disabled').type(companyName)
     cy.findByRole('button', { name: /search/i }).click()
 
     cy.findByRole('button', { name: /go!/i }).should('have.length', 1).click()
@@ -61,7 +61,7 @@ describe('Places', () => {
   it('should create a new place successfully', () => {
     cy.findByRole('button', { name: /account/i }).click()
     cy.findByRole('heading', { name: new RegExp(companyName, 'i') }).should('have.length', 0)
-    cy.findByRole('button', { name: /add new place/i }).click()
+    cy.findByRole('button', { name: /add new collect point/i }).click()
 
     cy.findByRole('textbox', { name: /company name/i }).type(companyName)
     cy.wrap(Object.entries(location)).each(([key, value]: [string, string]) => {
@@ -73,7 +73,7 @@ describe('Places', () => {
       cy.findByRole('textbox', { name: new RegExp(title(key), 'i') }).type(value)
     })
 
-    cy.findByRole('button', { name: /add place/i }).should('not.be.disabled').click()
+    cy.findByRole('button', { name: /add collect point/i }).should('not.be.disabled').click()
     cy.findByRole('heading', { name: new RegExp(companyName, 'i') }).should('have.length', 1)
   })
 })

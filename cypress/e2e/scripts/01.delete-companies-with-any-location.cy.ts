@@ -1,4 +1,4 @@
-import { e2eSupabase } from '../helpers/supabase.js'
+import { e2eSupabase } from '../../helpers/supabase.js'
 
 describe('Delete companies without locations', () => {
   it('run delete', () => {
