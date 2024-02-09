@@ -23,14 +23,16 @@ import { supabase } from '../utils/supabase.ts'
 import { useErrorToast } from '../hooks/toast/useErrorToast.tsx'
 import { useState } from 'react'
 import { LanguageButton } from '../components/LanguageButton/LanguageButton.tsx'
+import { useTranslation } from 'react-i18next'
 
 const validationSchema = Yup.object({
-  email: Yup.string().email('Invalid email address').required('Required').max(50, 'Email must be at most 50 characters')
+  email: Yup.string().email('validations.email').required('validations.required').max(50, 'validations.field-max-length')
 })
 
 type FormValues = Yup.InferType<typeof validationSchema>
 
 export const ForgotPassword = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const toastError = useErrorToast()
   const [isOpen, setIsOpen] = useState(false)
@@ -71,7 +73,7 @@ export const ForgotPassword = () => {
   return <>
     <Center pt={28} flexDirection={'column'}>
       <Heading size={'sm'} mb={8}>
-      Enter your email address that we will send you a recovery email.
+        {t('forgot-password.enter-your-email')}
       </Heading>
       <form onSubmit={formik.handleSubmit}>
         <FormControl
@@ -79,7 +81,7 @@ export const ForgotPassword = () => {
           isRequired
           isInvalid={hasFormikError<FormValues>('email', formik.touched, formik.errors)}
         >
-          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormLabel htmlFor="email">{t('labels.email')}</FormLabel>
           <Input
             aria-label={'Email'}
             name={'email'}
@@ -88,7 +90,7 @@ export const ForgotPassword = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+          <FormErrorMessage>{t(formik.errors.email ?? '')}</FormErrorMessage>
         </FormControl>
 
         <ButtonGroup mt={8} spacing={10} isDisabled={formik.isSubmitting}>
@@ -99,7 +101,7 @@ export const ForgotPassword = () => {
             isLoading={formik.isSubmitting}
             isDisabled={Object.keys(formik.errors).length > 0}
           >
-          Send Recovery Email
+            {t('actions.send-recovery-email')}
           </Button>
         </ButtonGroup>
       </form>
@@ -114,9 +116,9 @@ export const ForgotPassword = () => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Recovery Email Sent</ModalHeader>
+        <ModalHeader>{t('forgot-password.confirmation-modal.title')}</ModalHeader>
         <ModalBody>
-          <Text>We have sent you an email to reset your password. Check your inbox!</Text>
+          <Text>{t('forgot-password.confirmation-modal.message')}</Text>
         </ModalBody>
         <ModalFooter>
           <Button colorScheme={'blue'} onClick={goToLogin}>Login</Button>
