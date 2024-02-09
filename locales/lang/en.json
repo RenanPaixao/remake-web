@@ -49,7 +49,8 @@
     "longitude": "Longitude must be less than or equal to 180 and greater than or equal to -180 and have decimal precision 1 digit at least (e.g. 12.3)"
   },
   "messages": {
-    "you-have-login": "You have logged in successfully!"
+    "you-have-login": "You have logged in successfully!",
+    "place-added": "Place added successfully!"
   },
   "login": {
     "dont-have-an-account": "Don't have an account?",

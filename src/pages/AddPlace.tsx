@@ -102,7 +102,7 @@ export const AddPlace = () => {
           longitude: parseFloat(values.longitude)
         })
 
-        successToast({ description: t('add-place.place-added') })
+        successToast({ description: t('messages.place-added') })
         navigate('/account')
       }catch(e) {
         console.error(e)
