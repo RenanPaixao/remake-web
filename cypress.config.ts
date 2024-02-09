@@ -8,6 +8,7 @@ export default defineConfig({
     chromeWebSecurity: false,
     setupNodeEvents(on) {
       on('file:preprocessor', vitePreprocessor())
-    }
+    },
+    excludeSpecPattern: ['**/cypress/e2e/scripts/**/*']
   }
 })
