@@ -5,6 +5,7 @@ import { LoginForm } from '../components/LoginForm/LoginForm.tsx'
 import { saveLocationOnSessionStorage } from '../utils/location.ts'
 import logo from '../assets/logo.webp'
 import { useTranslation } from 'react-i18next'
+import { LanguageButton } from '../components/LanguageButton/LanguageButton.tsx'
 
 export const Login = (): React.JSX.Element => {
   const { t } = useTranslation()
@@ -27,6 +28,8 @@ export const Login = (): React.JSX.Element => {
             <strong>{t('login.forgot-password')}</strong>
           </Link>
         </Text>
+
+        <LanguageButton mt={'160px'} variant={'ghost'}/>
       </Box>
     </Center>
   </>

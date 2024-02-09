@@ -22,6 +22,7 @@ import { hasFormikError } from '../utils/hasFormikError.ts'
 import { supabase } from '../utils/supabase.ts'
 import { useErrorToast } from '../hooks/toast/useErrorToast.tsx'
 import { useState } from 'react'
+import { LanguageButton } from '../components/LanguageButton/LanguageButton.tsx'
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required').max(50, 'Email must be at most 50 characters')
@@ -102,6 +103,7 @@ export const ForgotPassword = () => {
           </Button>
         </ButtonGroup>
       </form>
+      <LanguageButton mt={'200px'} variant={'ghost'}/>
     </Center>
 
     <Modal

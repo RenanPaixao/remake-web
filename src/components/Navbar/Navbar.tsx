@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useErrorToast } from '../../hooks/toast/useErrorToast.tsx'
 import { useTranslation } from 'react-i18next'
+import { LanguageButton } from '../LanguageButton/LanguageButton.tsx'
 
 export const Navbar = (props: FlexProps) => {
   const { t } = useTranslation()
@@ -35,10 +36,13 @@ export const Navbar = (props: FlexProps) => {
   }
 
   return <Flex as={'nav'} w='100%' {...props}>
-    <TheLink to={'/'}>
-      <NavbarLogo h={'50px'} src={logo} />
+    <TheLink to={'/'} >
+      <NavbarLogo alignSelf={'center'} h={'50px'} w={'92px'} src={logo} />
     </TheLink>
     <LinkList />
-    <Button colorScheme='red' variant='outline' w={'80px'} isLoading={isLoading} onClick={logout}>{t('actions.logout')}</Button>
+    <Flex gap={2}>
+      <LanguageButton/>
+      <Button colorScheme='red' variant='outline' w={'80px'} isLoading={isLoading} onClick={logout}>{t('actions.logout')}</Button>
+    </Flex>
   </Flex>
 }

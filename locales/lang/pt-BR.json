@@ -24,7 +24,7 @@
   },
   "actions": {
     "login": "Entrar",
-    "create-account": "Create Conta",
+    "create-account": "Criar Conta",
     "send-recovery-email": "Enviar Email de Recuperação",
     "home": "Início",
     "collect-places": "Pontos de Coleta",
