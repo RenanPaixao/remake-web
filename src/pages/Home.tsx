@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next'
 export const Home = () => {
   const { t } = useTranslation()
   return (
-    <Center mt={20}>
+    <Center>
       <Flex
+        my={20}
         boxShadow='rgba(0, 0, 0, 0.56) 0px 22px 70px 4px'
         maxW={'880px'}
         w='60%'
