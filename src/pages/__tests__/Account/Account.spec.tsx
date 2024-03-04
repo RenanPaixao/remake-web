@@ -1,4 +1,4 @@
-import { renderWithUserContext, user } from '../../../../tests/test-utils.tsx'
+import { renderWithStore, user } from '../../../../tests/test-utils.tsx'
 import { CompanyService } from '../../../services/companyService.ts'
 import { waitFor } from '@testing-library/dom'
 import { expect } from 'vitest'
@@ -33,7 +33,7 @@ describe('Account', () => {
   })
   it('should render', async () => {
     mockCompanies(ACCOUNT_COMPANIES)
-    const { container, getByRole } = renderWithUserContext(<Account/>)
+    const { container, getByRole } = renderWithStore(<Account/>)
 
     const loading = getByRole('generic', { name: 'loading' })
 
@@ -46,7 +46,7 @@ describe('Account', () => {
 
   it('should render when have no companies', async () => {
     mockCompanies([])
-    const { container, getByRole } = renderWithUserContext(<Account/>)
+    const { container, getByRole } = renderWithStore(<Account/>)
 
     const loading = getByRole('generic', { name: 'loading' })
 
@@ -60,7 +60,7 @@ describe('Account', () => {
   it('should call actions from place card and add new place', async () => {
     mockCompanies([ACCOUNT_COMPANIES[0]])
 
-    const { getByRole } = renderWithUserContext(<Account/>)
+    const { getByRole } = renderWithStore(<Account/>)
 
     const addPlaceButton = getByRole('button', { name: /add new collect point/i })
     await user.click(addPlaceButton)

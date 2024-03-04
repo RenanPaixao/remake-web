@@ -4,7 +4,10 @@ import { ReactElement } from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from '@remix-run/router'
 import { userEvent } from '@testing-library/user-event'
-import { UserContext, IProps as UserContextProps } from '../src/context/UserContext.tsx'
+import { Provider } from 'react-redux'
+import { RootState } from '../src/store'
+import { configureStore } from '@reduxjs/toolkit'
+import { createUserSlice } from '../src/store/reducers/user/userSlice.ts'
 
 const testingHistory = createMemoryHistory()
 const user = userEvent.setup()
@@ -37,28 +40,40 @@ function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>
 /**
  * Custom render function that wraps the component with UserContext and other common contexts.
  * @param ui
- * @param contextValues
+ * @param initialState
  */
-function renderWithUserContext(ui: ReactElement, contextValues?: Partial<UserContextProps>) {
-  return customRender(
-    <UserContext.Provider value={{
+function renderWithStore(ui: ReactElement, initialState?: Partial<RootState>) {
+  const state = {
+    user: {
       userInformation: {
         id: '39f35111-a2d7-48c2-8b0a-ed0a70ed79c6',
         email: 'test.email@email.com',
         fullName: 'john doe',
         isRecycler: true,
-        ...contextValues?.userInformation
+        ...(initialState?.user?.userInformation ?? {})
       },
-      isAuthenticated: contextValues?.isAuthenticated || true
-    }}>
+      isAuthenticated: initialState?.user?.isAuthenticated || true
+    }
+  }
+
+  const userSlice = createUserSlice(initialState?.user ?? state.user)
+
+  const store = configureStore({
+    reducer: {
+      user: userSlice.reducer
+    }
+  })
+
+  return customRender(
+    <Provider store={store}>
       {ui}
-    </UserContext.Provider>
+    </Provider>
   )
 }
 
 export {
   customRender,
-  renderWithUserContext,
+  renderWithStore,
   testingHistory,
   user
 }
