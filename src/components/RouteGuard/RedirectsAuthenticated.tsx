@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
 
 export const RedirectsAuthenticated = ({ children }: PropsWithChildren) => {
-  const { isAuthenticated } = useSelector((state: RootState) => state.user)
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated)
   const warningToast = useWarningToast()
 
   const showWarningToast = useCallback(() => {
@@ -16,7 +16,7 @@ export const RedirectsAuthenticated = ({ children }: PropsWithChildren) => {
     if (isAuthenticated) {
       showWarningToast()
     }
-  }, [isAuthenticated, showWarningToast])
+  }, [])
 
   return isAuthenticated ? <Navigate to={'/'} /> : children
 }

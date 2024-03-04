@@ -11,7 +11,7 @@ export const Login = (): React.JSX.Element => {
   const { t } = useTranslation()
   useEffect(() => {
     saveLocationOnSessionStorage()
-  })
+  }, [])
   return <>
     <Center flexDirection='column'>
       <Image src={logo} alt='Remake logo' my={20} />
