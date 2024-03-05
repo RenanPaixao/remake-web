@@ -35,4 +35,16 @@ const store = configureStore({
 const persistor = persistStore(store)
 
 export { store, persistor }
-export type RootState = Omit<ReturnType<typeof store.getState>, '_persist'>
+
+// Remove the _persist property from the state type
+type RemovePersistKeys<T> = T extends object
+  ? {
+    [K in keyof T as string extends K
+      ? never
+      : K extends '_persist'
+        ? never
+        : K]: RemovePersistKeys<T[K]>;
+  }
+  : T;
+
+export type RootState = RemovePersistKeys<ReturnType<typeof store.getState>>
