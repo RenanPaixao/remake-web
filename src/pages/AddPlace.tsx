@@ -14,11 +14,12 @@ import { useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { FaPlus } from 'react-icons/fa6'
 import { title } from 'radash'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { CompanyService } from '../services/companyService.ts'
-import { UserContext } from '../context/UserContext.tsx'
 import { useSuccessToast } from '../hooks/toast/useSuccessToast.tsx'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
 
 const validationSchema = Yup.object({
   company_name: Yup.string().required('validations.required'),
@@ -69,7 +70,7 @@ const getKeyToTranslate = (key: keyof FormValues) => {
 
 export const AddPlace = () => {
   const { t } = useTranslation()
-  const { userInformation } = useContext(UserContext)
+  const { userInformation } = useSelector((state: RootState) => state.user)
   const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()

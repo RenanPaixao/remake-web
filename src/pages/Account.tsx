@@ -10,17 +10,18 @@ import {
   Spinner,
   Text
 } from '@chakra-ui/react'
-import { UserContext } from '../context/UserContext.tsx'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CompanyService, CompanyWithLocations } from '../services/companyService.ts'
 import { PlaceCard } from '../components/PlaceCard/PlaceCard.tsx'
 import { showLocationOnMaps } from '../utils/location.ts'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { RootState } from '../store'
 
 export const Account = () => {
   const { t } = useTranslation()
-  const { userInformation } = useContext(UserContext)
+  const { userInformation } = useSelector((state: RootState) => state.user)
   const [isLoading, setIsLoading] = useState(true)
   const [companies, setCompanies] = useState<CompanyWithLocations[]>([])
   const navigate = useNavigate()

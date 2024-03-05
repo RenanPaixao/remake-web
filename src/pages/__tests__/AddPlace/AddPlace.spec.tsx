@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/dom'
 import { expect } from 'vitest'
-import { renderWithUserContext, user } from '../../../../tests/test-utils.tsx'
+import { renderWithStore, user } from '../../../../tests/test-utils.tsx'
 import { AddPlace } from '../../AddPlace.tsx'
 import { CompanyService } from '../../../services/companyService.ts'
 
@@ -28,13 +28,13 @@ describe('AddPlace', () => {
   })
 
   it('should render', async () => {
-    const { container } = renderWithUserContext(<AddPlace/>)
+    const { container } = renderWithStore(<AddPlace/>)
 
     expect(container).toMatchSnapshot()
   })
 
   it('should be possible to fill all inputs', async () => {
-    const { getByRole } = renderWithUserContext(<AddPlace/>)
+    const { getByRole } = renderWithStore(<AddPlace/>)
     const addPlaceButton = getByRole('button', { name: /Add collect point/i })
 
     await fillForm()
@@ -55,7 +55,7 @@ describe('AddPlace', () => {
   })
 
   it('should back to account page successfully', async () => {
-    const { getByRole } = renderWithUserContext(<AddPlace/>)
+    const { getByRole } = renderWithStore(<AddPlace/>)
 
     const accountButton = getByRole('button', { name: /account/i })
 
@@ -66,12 +66,15 @@ describe('AddPlace', () => {
   })
 
   it('should redirect to login case the user id is not present', async () => {
-    const { getByRole } = renderWithUserContext(<AddPlace/>, {
-      userInformation: {
-        id: null,
-        fullName: '',
-        email: '',
-        isRecycler: false
+    const { getByRole } = renderWithStore(<AddPlace/>, {
+      user: {
+        isAuthenticated: false,
+        userInformation: {
+          id: null,
+          fullName: '',
+          email: '',
+          isRecycler: false
+        }
       }
     })
     const addPlaceButton = getByRole('button', { name: /Add collect point/i })
